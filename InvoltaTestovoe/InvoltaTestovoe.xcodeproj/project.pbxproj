@@ -1,0 +1,607 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1BFF52CD29F09AB300B3611B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF52CC29F09AB300B3611B /* AppDelegate.swift */; };
+		1BFF52CF29F09AB300B3611B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF52CE29F09AB300B3611B /* SceneDelegate.swift */; };
+		1BFF52D129F09AB300B3611B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF52D029F09AB300B3611B /* ViewController.swift */; };
+		1BFF52D429F09AB300B3611B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BFF52D229F09AB300B3611B /* Main.storyboard */; };
+		1BFF52D629F09AB400B3611B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BFF52D529F09AB400B3611B /* Assets.xcassets */; };
+		1BFF52D929F09AB400B3611B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BFF52D729F09AB400B3611B /* LaunchScreen.storyboard */; };
+		1BFF52E429F09AB400B3611B /* InvoltaTestovoeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF52E329F09AB400B3611B /* InvoltaTestovoeTests.swift */; };
+		1BFF52EE29F09AB400B3611B /* InvoltaTestovoeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF52ED29F09AB400B3611B /* InvoltaTestovoeUITests.swift */; };
+		1BFF52F029F09AB400B3611B /* InvoltaTestovoeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF52EF29F09AB400B3611B /* InvoltaTestovoeUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1BFF52E029F09AB400B3611B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1BFF52C129F09AB300B3611B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1BFF52C829F09AB300B3611B;
+			remoteInfo = InvoltaTestovoe;
+		};
+		1BFF52EA29F09AB400B3611B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1BFF52C129F09AB300B3611B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1BFF52C829F09AB300B3611B;
+			remoteInfo = InvoltaTestovoe;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1BFF52C929F09AB300B3611B /* InvoltaTestovoe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InvoltaTestovoe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BFF52CC29F09AB300B3611B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1BFF52CE29F09AB300B3611B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		1BFF52D029F09AB300B3611B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1BFF52D329F09AB300B3611B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1BFF52D529F09AB400B3611B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1BFF52D829F09AB400B3611B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1BFF52DA29F09AB400B3611B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1BFF52DF29F09AB400B3611B /* InvoltaTestovoeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InvoltaTestovoeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BFF52E329F09AB400B3611B /* InvoltaTestovoeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoltaTestovoeTests.swift; sourceTree = "<group>"; };
+		1BFF52E929F09AB400B3611B /* InvoltaTestovoeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InvoltaTestovoeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BFF52ED29F09AB400B3611B /* InvoltaTestovoeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoltaTestovoeUITests.swift; sourceTree = "<group>"; };
+		1BFF52EF29F09AB400B3611B /* InvoltaTestovoeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoltaTestovoeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1BFF52C629F09AB300B3611B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BFF52DC29F09AB400B3611B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BFF52E629F09AB400B3611B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1BFF52C029F09AB300B3611B = {
+			isa = PBXGroup;
+			children = (
+				1BFF52CB29F09AB300B3611B /* InvoltaTestovoe */,
+				1BFF52E229F09AB400B3611B /* InvoltaTestovoeTests */,
+				1BFF52EC29F09AB400B3611B /* InvoltaTestovoeUITests */,
+				1BFF52CA29F09AB300B3611B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1BFF52CA29F09AB300B3611B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1BFF52C929F09AB300B3611B /* InvoltaTestovoe.app */,
+				1BFF52DF29F09AB400B3611B /* InvoltaTestovoeTests.xctest */,
+				1BFF52E929F09AB400B3611B /* InvoltaTestovoeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1BFF52CB29F09AB300B3611B /* InvoltaTestovoe */ = {
+			isa = PBXGroup;
+			children = (
+				1BFF52CC29F09AB300B3611B /* AppDelegate.swift */,
+				1BFF52CE29F09AB300B3611B /* SceneDelegate.swift */,
+				1BFF52D029F09AB300B3611B /* ViewController.swift */,
+				1BFF52D229F09AB300B3611B /* Main.storyboard */,
+				1BFF52D529F09AB400B3611B /* Assets.xcassets */,
+				1BFF52D729F09AB400B3611B /* LaunchScreen.storyboard */,
+				1BFF52DA29F09AB400B3611B /* Info.plist */,
+			);
+			path = InvoltaTestovoe;
+			sourceTree = "<group>";
+		};
+		1BFF52E229F09AB400B3611B /* InvoltaTestovoeTests */ = {
+			isa = PBXGroup;
+			children = (
+				1BFF52E329F09AB400B3611B /* InvoltaTestovoeTests.swift */,
+			);
+			path = InvoltaTestovoeTests;
+			sourceTree = "<group>";
+		};
+		1BFF52EC29F09AB400B3611B /* InvoltaTestovoeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1BFF52ED29F09AB400B3611B /* InvoltaTestovoeUITests.swift */,
+				1BFF52EF29F09AB400B3611B /* InvoltaTestovoeUITestsLaunchTests.swift */,
+			);
+			path = InvoltaTestovoeUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1BFF52C829F09AB300B3611B /* InvoltaTestovoe */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1BFF52F329F09AB400B3611B /* Build configuration list for PBXNativeTarget "InvoltaTestovoe" */;
+			buildPhases = (
+				1BFF52C529F09AB300B3611B /* Sources */,
+				1BFF52C629F09AB300B3611B /* Frameworks */,
+				1BFF52C729F09AB300B3611B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = InvoltaTestovoe;
+			productName = InvoltaTestovoe;
+			productReference = 1BFF52C929F09AB300B3611B /* InvoltaTestovoe.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1BFF52DE29F09AB400B3611B /* InvoltaTestovoeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1BFF52F629F09AB400B3611B /* Build configuration list for PBXNativeTarget "InvoltaTestovoeTests" */;
+			buildPhases = (
+				1BFF52DB29F09AB400B3611B /* Sources */,
+				1BFF52DC29F09AB400B3611B /* Frameworks */,
+				1BFF52DD29F09AB400B3611B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1BFF52E129F09AB400B3611B /* PBXTargetDependency */,
+			);
+			name = InvoltaTestovoeTests;
+			productName = InvoltaTestovoeTests;
+			productReference = 1BFF52DF29F09AB400B3611B /* InvoltaTestovoeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1BFF52E829F09AB400B3611B /* InvoltaTestovoeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1BFF52F929F09AB400B3611B /* Build configuration list for PBXNativeTarget "InvoltaTestovoeUITests" */;
+			buildPhases = (
+				1BFF52E529F09AB400B3611B /* Sources */,
+				1BFF52E629F09AB400B3611B /* Frameworks */,
+				1BFF52E729F09AB400B3611B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1BFF52EB29F09AB400B3611B /* PBXTargetDependency */,
+			);
+			name = InvoltaTestovoeUITests;
+			productName = InvoltaTestovoeUITests;
+			productReference = 1BFF52E929F09AB400B3611B /* InvoltaTestovoeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1BFF52C129F09AB300B3611B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					1BFF52C829F09AB300B3611B = {
+						CreatedOnToolsVersion = 14.3;
+					};
+					1BFF52DE29F09AB400B3611B = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = 1BFF52C829F09AB300B3611B;
+					};
+					1BFF52E829F09AB400B3611B = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = 1BFF52C829F09AB300B3611B;
+					};
+				};
+			};
+			buildConfigurationList = 1BFF52C429F09AB300B3611B /* Build configuration list for PBXProject "InvoltaTestovoe" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1BFF52C029F09AB300B3611B;
+			productRefGroup = 1BFF52CA29F09AB300B3611B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1BFF52C829F09AB300B3611B /* InvoltaTestovoe */,
+				1BFF52DE29F09AB400B3611B /* InvoltaTestovoeTests */,
+				1BFF52E829F09AB400B3611B /* InvoltaTestovoeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1BFF52C729F09AB300B3611B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BFF52D929F09AB400B3611B /* LaunchScreen.storyboard in Resources */,
+				1BFF52D629F09AB400B3611B /* Assets.xcassets in Resources */,
+				1BFF52D429F09AB300B3611B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BFF52DD29F09AB400B3611B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BFF52E729F09AB400B3611B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1BFF52C529F09AB300B3611B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BFF52D129F09AB300B3611B /* ViewController.swift in Sources */,
+				1BFF52CD29F09AB300B3611B /* AppDelegate.swift in Sources */,
+				1BFF52CF29F09AB300B3611B /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BFF52DB29F09AB400B3611B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BFF52E429F09AB400B3611B /* InvoltaTestovoeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BFF52E529F09AB400B3611B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BFF52EE29F09AB400B3611B /* InvoltaTestovoeUITests.swift in Sources */,
+				1BFF52F029F09AB400B3611B /* InvoltaTestovoeUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1BFF52E129F09AB400B3611B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1BFF52C829F09AB300B3611B /* InvoltaTestovoe */;
+			targetProxy = 1BFF52E029F09AB400B3611B /* PBXContainerItemProxy */;
+		};
+		1BFF52EB29F09AB400B3611B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1BFF52C829F09AB300B3611B /* InvoltaTestovoe */;
+			targetProxy = 1BFF52EA29F09AB400B3611B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1BFF52D229F09AB300B3611B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1BFF52D329F09AB300B3611B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1BFF52D729F09AB400B3611B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1BFF52D829F09AB400B3611B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1BFF52F129F09AB400B3611B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1BFF52F229F09AB400B3611B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1BFF52F429F09AB400B3611B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 638JMZXLWD;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = InvoltaTestovoe/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.personalProject.InvoltaTestovoe;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1BFF52F529F09AB400B3611B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 638JMZXLWD;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = InvoltaTestovoe/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.personalProject.InvoltaTestovoe;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1BFF52F729F09AB400B3611B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 638JMZXLWD;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.personalProject.InvoltaTestovoeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/InvoltaTestovoe.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/InvoltaTestovoe";
+			};
+			name = Debug;
+		};
+		1BFF52F829F09AB400B3611B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 638JMZXLWD;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.personalProject.InvoltaTestovoeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/InvoltaTestovoe.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/InvoltaTestovoe";
+			};
+			name = Release;
+		};
+		1BFF52FA29F09AB400B3611B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 638JMZXLWD;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.personalProject.InvoltaTestovoeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = InvoltaTestovoe;
+			};
+			name = Debug;
+		};
+		1BFF52FB29F09AB400B3611B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 638JMZXLWD;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.personalProject.InvoltaTestovoeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = InvoltaTestovoe;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1BFF52C429F09AB300B3611B /* Build configuration list for PBXProject "InvoltaTestovoe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BFF52F129F09AB400B3611B /* Debug */,
+				1BFF52F229F09AB400B3611B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1BFF52F329F09AB400B3611B /* Build configuration list for PBXNativeTarget "InvoltaTestovoe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BFF52F429F09AB400B3611B /* Debug */,
+				1BFF52F529F09AB400B3611B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1BFF52F629F09AB400B3611B /* Build configuration list for PBXNativeTarget "InvoltaTestovoeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BFF52F729F09AB400B3611B /* Debug */,
+				1BFF52F829F09AB400B3611B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1BFF52F929F09AB400B3611B /* Build configuration list for PBXNativeTarget "InvoltaTestovoeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BFF52FA29F09AB400B3611B /* Debug */,
+				1BFF52FB29F09AB400B3611B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1BFF52C129F09AB300B3611B /* Project object */;
+}
