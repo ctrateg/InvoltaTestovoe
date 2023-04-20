@@ -21,13 +21,13 @@ final class MessageCollectionViewDataSource: NSObject, UICollectionViewDataSourc
             return workingMessages
         }
         set {
-            workingMessages?.append(contentsOf: newValue ?? [])
+            workingMessages.append(contentsOf: newValue ?? [])
         }
     }
 
     // MARK: - Private Properties
 
-    private var workingMessages: [String]?
+    private var workingMessages: [String] = []
     private weak var collectionView: UICollectionView?
 
     // MARK: - Initialization
@@ -39,18 +39,19 @@ final class MessageCollectionViewDataSource: NSObject, UICollectionViewDataSourc
     // MARK: - UICollectionViewDataSource
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return workingMessages?.count ?? 0
+        return workingMessages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.messageCell, for: indexPath) as? MessageCollectionCell,
-            let message = workingMessages?[indexPath.row]
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.messageCell, for: indexPath) as? MessageCollectionCell
         else {
             return UICollectionViewCell()
         }
 
-        cell.configure(message: message)
+        cell.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+
+        cell.configure(message: workingMessages[indexPath.row])
 
         return cell
     }

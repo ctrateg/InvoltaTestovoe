@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ICb-AM-Tfb">
-                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                    <rect key="frame" x="0.0" y="59" width="393" height="719"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="teT-o2-Vi5">
                         <size key="itemSize" width="128" height="128"/>
@@ -50,23 +50,31 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eNA-zr-uSV">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="59"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="eNA-zr-uSV" secondAttribute="trailing" id="2hf-kZ-hBo"/>
+                <constraint firstItem="eNA-zr-uSV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="6f5-jA-QtE"/>
                 <constraint firstItem="of5-U5-ZTQ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="7Kd-Sa-TlJ"/>
                 <constraint firstItem="ICb-AM-Tfb" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="7Rc-UO-Ihn"/>
                 <constraint firstAttribute="trailing" secondItem="IND-5Z-CH8" secondAttribute="trailing" id="EFz-dx-swk"/>
                 <constraint firstItem="ICb-AM-Tfb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Oss-Cl-qR6"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ICb-AM-Tfb" secondAttribute="bottom" id="Uwh-42-bNY"/>
+                <constraint firstItem="eNA-zr-uSV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="QN2-Py-TGw"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ICb-AM-Tfb" secondAttribute="bottom" constant="40" id="Uwh-42-bNY"/>
                 <constraint firstItem="IND-5Z-CH8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="YKv-if-1my"/>
                 <constraint firstItem="of5-U5-ZTQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ha1-vP-Uf0"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="IND-5Z-CH8" secondAttribute="bottom" id="n1S-k0-VGy"/>
+                <constraint firstItem="ICb-AM-Tfb" firstAttribute="top" secondItem="eNA-zr-uSV" secondAttribute="bottom" id="uty-na-nfm"/>
                 <constraint firstAttribute="trailing" secondItem="of5-U5-ZTQ" secondAttribute="trailing" id="vYk-6W-Jy7"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ICb-AM-Tfb" secondAttribute="trailing" id="vZ7-VF-IO4"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="132" y="9"/>
+            <point key="canvasLocation" x="130.53435114503816" y="8.4507042253521139"/>
         </view>
     </objects>
     <resources>

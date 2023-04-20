@@ -14,7 +14,6 @@
 		1BFF530129F09BFD00B3611B /* MessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BFF52FF29F09BFD00B3611B /* MessageViewController.xib */; };
 		1BFF530629F09E1400B3611B /* MessageCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF530529F09E1400B3611B /* MessageCollectionViewDataSource.swift */; };
 		1BFF530829F09E2000B3611B /* MessageCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF530729F09E2000B3611B /* MessageCollectionViewDelegate.swift */; };
-		1BFF530A29F09E3000B3611B /* MessageCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF530929F09E3000B3611B /* MessageCollectionViewFlowLayout.swift */; };
 		1BFF530D29F09F3900B3611B /* MessagesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF530C29F09F3900B3611B /* MessagesRequest.swift */; };
 		1BFF530F29F09F4500B3611B /* MessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF530E29F09F4500B3611B /* MessagesService.swift */; };
 		1BFF531329F09F8200B3611B /* MessageModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF531229F09F8200B3611B /* MessageModuleBuilder.swift */; };
@@ -23,7 +22,8 @@
 		1BFF531B29F0A33F00B3611B /* MessagesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF531A29F0A33F00B3611B /* MessagesModel.swift */; };
 		1BFF531F29F1494700B3611B /* MessageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF531D29F1494700B3611B /* MessageCollectionCell.swift */; };
 		1BFF532029F1494700B3611B /* MessageCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BFF531E29F1494700B3611B /* MessageCollectionCell.xib */; };
-		1BFF532329F188EC00B3611B /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF532229F188EC00B3611B /* TextField.swift */; };
+		1BFF532329F188EC00B3611B /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF532229F188EC00B3611B /* UITextField.swift */; };
+		1BFF532529F1A0A200B3611B /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF532429F1A0A200B3611B /* UIViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +36,6 @@
 		1BFF52FF29F09BFD00B3611B /* MessageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageViewController.xib; sourceTree = "<group>"; };
 		1BFF530529F09E1400B3611B /* MessageCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		1BFF530729F09E2000B3611B /* MessageCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCollectionViewDelegate.swift; sourceTree = "<group>"; };
-		1BFF530929F09E3000B3611B /* MessageCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		1BFF530C29F09F3900B3611B /* MessagesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesRequest.swift; sourceTree = "<group>"; };
 		1BFF530E29F09F4500B3611B /* MessagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesService.swift; sourceTree = "<group>"; };
 		1BFF531229F09F8200B3611B /* MessageModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModuleBuilder.swift; sourceTree = "<group>"; };
@@ -45,7 +44,8 @@
 		1BFF531A29F0A33F00B3611B /* MessagesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesModel.swift; sourceTree = "<group>"; };
 		1BFF531D29F1494700B3611B /* MessageCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCollectionCell.swift; sourceTree = "<group>"; };
 		1BFF531E29F1494700B3611B /* MessageCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCollectionCell.xib; sourceTree = "<group>"; };
-		1BFF532229F188EC00B3611B /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		1BFF532229F188EC00B3611B /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		1BFF532429F1A0A200B3611B /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +113,6 @@
 			children = (
 				1BFF530529F09E1400B3611B /* MessageCollectionViewDataSource.swift */,
 				1BFF530729F09E2000B3611B /* MessageCollectionViewDelegate.swift */,
-				1BFF530929F09E3000B3611B /* MessageCollectionViewFlowLayout.swift */,
 			);
 			path = MessageCollectionViewSource;
 			sourceTree = "<group>";
@@ -175,7 +174,8 @@
 		1BFF532129F188DD00B3611B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				1BFF532229F188EC00B3611B /* TextField.swift */,
+				1BFF532229F188EC00B3611B /* UITextField.swift */,
+				1BFF532429F1A0A200B3611B /* UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -257,9 +257,9 @@
 				1BFF531929F0A0EB00B3611B /* MessagePresenter.swift in Sources */,
 				1BFF531329F09F8200B3611B /* MessageModuleBuilder.swift in Sources */,
 				1BFF531B29F0A33F00B3611B /* MessagesModel.swift in Sources */,
-				1BFF532329F188EC00B3611B /* TextField.swift in Sources */,
+				1BFF532329F188EC00B3611B /* UITextField.swift in Sources */,
 				1BFF530029F09BFD00B3611B /* MessageViewController.swift in Sources */,
-				1BFF530A29F09E3000B3611B /* MessageCollectionViewFlowLayout.swift in Sources */,
+				1BFF532529F1A0A200B3611B /* UIViewController.swift in Sources */,
 				1BFF531F29F1494700B3611B /* MessageCollectionCell.swift in Sources */,
 				1BFF530F29F09F4500B3611B /* MessagesService.swift in Sources */,
 				1BFF531629F09FDA00B3611B /* MessageRouter.swift in Sources */,

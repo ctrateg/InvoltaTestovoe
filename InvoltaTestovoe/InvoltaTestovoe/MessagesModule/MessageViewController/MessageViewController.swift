@@ -40,15 +40,14 @@ final class MessageViewController: UIViewController {
     // MARK: - Private Properties
 
     private lazy var collectionDataSource = MessageCollectionViewDataSource(collectionView: collectionView)
-    private var collectionDelegate = MessageCollectionViewDelegate()
-    private var collectionLayout = MessageCollectionViewLayout()
+    private lazy var collectionDelegate = MessageCollectionViewDelegate()
 
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter?.viewDidLoad()
         addObservers()
+        presenter?.viewDidLoad()
     }
 
 }
@@ -59,6 +58,7 @@ extension MessageViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        textField.text = ""
         return true
     }
     
@@ -72,6 +72,7 @@ extension MessageViewController: MessageViewDelegate {
         configureMessageCollectionView()
         configureTitle()
         configureTextField()
+        hideKeyboardWhenTappedAround()
     }
     
     func updateScreen(messages: [String]?) {
@@ -87,11 +88,25 @@ extension MessageViewController: MessageViewDelegate {
 private extension MessageViewController {
 
     func configureMessageCollectionView() {
+        let cellNib = UINib(nibName: "MessageCollectionCell", bundle: nil)
+        collectionView.register(cellNib, forCellWithReuseIdentifier: "MessageCollectionCell")
+        collectionView.transform = CGAffineTransform.init(rotationAngle: (-(CGFloat)(Double.pi)))
         collectionView.backgroundColor = .systemMint
         collectionView.dataSource = collectionDataSource
         collectionView.delegate = collectionDelegate
-        collectionView.collectionViewLayout = collectionLayout
+    
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
+        collectionView.clipsToBounds = false
+        collectionView.isPagingEnabled = true
+
+        let layout = UICollectionViewFlowLayout()
+        // layout.itemSize = CGSize(width: 300, height: 40)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width - 16, height: 50)
+        layout.minimumInteritemSpacing = 16
+        layout.scrollDirection = .vertical
+        layout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        collectionView.collectionViewLayout = layout
     }
 
     func configureTitle() {
@@ -124,10 +139,10 @@ private extension MessageViewController {
     
     func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == .zero {
+            if self.textFieldButtonSpace.constant == .zero {
                 UIView.animate(withDuration: notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double ?? .zero) {
                     self.textFieldButtonSpace.constant += keyboardSize.height - Constants.textFieldKeyboardOffset
-                    self.collectionViewButtonSpace.constant += keyboardSize.height
+                    self.collectionViewButtonSpace.constant += keyboardSize.height - Constants.textFieldKeyboardOffset
                     self.view.layoutIfNeeded()
                 }
             }
@@ -136,8 +151,11 @@ private extension MessageViewController {
 
     func keyboardWillHide(notification: NSNotification) {
         if textFieldButtonSpace.constant != .zero {
-            textFieldButtonSpace.constant = .zero
-            self.collectionViewButtonSpace.constant = .zero
+            UIView.animate(withDuration: notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double ?? .zero) {
+                self.textFieldButtonSpace.constant = .zero
+                self.collectionViewButtonSpace.constant = 40
+                self.view.layoutIfNeeded()
+            }
         }
     }
 

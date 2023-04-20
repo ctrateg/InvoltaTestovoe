@@ -20,6 +20,7 @@ final class MessagePresenter {
     
     private enum Constants {
         static let defaultOffset = "0"
+        static let baseCountMessages = 12
     }
     
     // MARK: - Properties
@@ -51,7 +52,7 @@ extension MessagePresenter: MessagePresenterDelegate {
     func update(offset: String) {
         self.messageService.getMessages(offSet: offset) { model in
             DispatchQueue.main.async {
-                self.view?.updateScreen(messages: model.result)
+                self.view?.updateScreen(messages: Array(model.result?.prefix(Constants.baseCountMessages) ?? []))
             }
         }
     }
