@@ -23,6 +23,7 @@
 		1BFF531B29F0A33F00B3611B /* MessagesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF531A29F0A33F00B3611B /* MessagesModel.swift */; };
 		1BFF531F29F1494700B3611B /* MessageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF531D29F1494700B3611B /* MessageCollectionCell.swift */; };
 		1BFF532029F1494700B3611B /* MessageCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BFF531E29F1494700B3611B /* MessageCollectionCell.xib */; };
+		1BFF532329F188EC00B3611B /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF532229F188EC00B3611B /* TextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		1BFF531A29F0A33F00B3611B /* MessagesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesModel.swift; sourceTree = "<group>"; };
 		1BFF531D29F1494700B3611B /* MessageCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCollectionCell.swift; sourceTree = "<group>"; };
 		1BFF531E29F1494700B3611B /* MessageCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCollectionCell.xib; sourceTree = "<group>"; };
+		1BFF532229F188EC00B3611B /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 		1BFF52CB29F09AB300B3611B /* InvoltaTestovoe */ = {
 			isa = PBXGroup;
 			children = (
+				1BFF532129F188DD00B3611B /* Extensions */,
 				1BFF531029F09F5A00B3611B /* MessagesModule */,
 				1BFF530B29F09F2A00B3611B /* Network */,
 				1BFF530229F09CAF00B3611B /* Source */,
@@ -169,6 +172,14 @@
 			path = MessageCollectionCell;
 			sourceTree = "<group>";
 		};
+		1BFF532129F188DD00B3611B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1BFF532229F188EC00B3611B /* TextField.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -246,6 +257,7 @@
 				1BFF531929F0A0EB00B3611B /* MessagePresenter.swift in Sources */,
 				1BFF531329F09F8200B3611B /* MessageModuleBuilder.swift in Sources */,
 				1BFF531B29F0A33F00B3611B /* MessagesModel.swift in Sources */,
+				1BFF532329F188EC00B3611B /* TextField.swift in Sources */,
 				1BFF530029F09BFD00B3611B /* MessageViewController.swift in Sources */,
 				1BFF530A29F09E3000B3611B /* MessageCollectionViewFlowLayout.swift in Sources */,
 				1BFF531F29F1494700B3611B /* MessageCollectionCell.swift in Sources */,

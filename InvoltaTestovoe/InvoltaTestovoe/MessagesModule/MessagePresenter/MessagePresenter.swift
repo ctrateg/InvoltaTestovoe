@@ -49,8 +49,8 @@ extension MessagePresenter: MessagePresenterDelegate {
     }
 
     func update(offset: String) {
-        messageService.getMessages(offSet: offset) { model in
-            DispatchQueue.main.async(flags: .barrier) {
+        self.messageService.getMessages(offSet: offset) { model in
+            DispatchQueue.main.async {
                 self.view?.updateScreen(messages: model.result)
             }
         }

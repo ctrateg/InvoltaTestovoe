@@ -49,6 +49,7 @@ final class MessageCollectionViewDataSource: NSObject, UICollectionViewDataSourc
         else {
             return UICollectionViewCell()
         }
+
         cell.configure(message: message)
 
         return cell
