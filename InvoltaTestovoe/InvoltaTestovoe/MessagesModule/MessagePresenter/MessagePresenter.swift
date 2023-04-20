@@ -25,7 +25,6 @@ final class MessagePresenter {
     
     // MARK: - Properties
 
-    var router: MessageRouterDelegate?
     var view: MessageViewDelegate?
 
     // MARK: - Private Properties

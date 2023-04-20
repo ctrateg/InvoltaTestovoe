@@ -12,19 +12,21 @@
 		1BFF52D929F09AB400B3611B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BFF52D729F09AB400B3611B /* LaunchScreen.storyboard */; };
 		1BFF530029F09BFD00B3611B /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF52FE29F09BFD00B3611B /* MessageViewController.swift */; };
 		1BFF530129F09BFD00B3611B /* MessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BFF52FF29F09BFD00B3611B /* MessageViewController.xib */; };
-		1BFF530629F09E1400B3611B /* MessageCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF530529F09E1400B3611B /* MessageCollectionViewDataSource.swift */; };
-		1BFF530829F09E2000B3611B /* MessageCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF530729F09E2000B3611B /* MessageCollectionViewDelegate.swift */; };
+		1BFF530629F09E1400B3611B /* MessageTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF530529F09E1400B3611B /* MessageTableViewDataSource.swift */; };
+		1BFF530829F09E2000B3611B /* MessageTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF530729F09E2000B3611B /* MessageTableViewDelegate.swift */; };
 		1BFF530D29F09F3900B3611B /* MessagesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF530C29F09F3900B3611B /* MessagesRequest.swift */; };
 		1BFF530F29F09F4500B3611B /* MessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF530E29F09F4500B3611B /* MessagesService.swift */; };
 		1BFF531329F09F8200B3611B /* MessageModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF531229F09F8200B3611B /* MessageModuleBuilder.swift */; };
-		1BFF531629F09FDA00B3611B /* MessageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF531529F09FDA00B3611B /* MessageRouter.swift */; };
 		1BFF531929F0A0EB00B3611B /* MessagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF531829F0A0EB00B3611B /* MessagePresenter.swift */; };
 		1BFF531B29F0A33F00B3611B /* MessagesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF531A29F0A33F00B3611B /* MessagesModel.swift */; };
-		1BFF531F29F1494700B3611B /* MessageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF531D29F1494700B3611B /* MessageCollectionCell.swift */; };
-		1BFF532029F1494700B3611B /* MessageCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BFF531E29F1494700B3611B /* MessageCollectionCell.xib */; };
 		1BFF532329F188EC00B3611B /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF532229F188EC00B3611B /* UITextField.swift */; };
 		1BFF532529F1A0A200B3611B /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF532429F1A0A200B3611B /* UIViewController.swift */; };
-		1BFF532729F1AE8F00B3611B /* MessageCollectionViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF532629F1AE8F00B3611B /* MessageCollectionViewAdapter.swift */; };
+		1BFF532729F1AE8F00B3611B /* MessageTableViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF532629F1AE8F00B3611B /* MessageTableViewAdapter.swift */; };
+		1BFF532C29F1E91100B3611B /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF532A29F1E91100B3611B /* MessageTableViewCell.swift */; };
+		1BFF532D29F1E91100B3611B /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BFF532B29F1E91100B3611B /* MessageTableViewCell.xib */; };
+		1BFF532F29F1EE3500B3611B /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF532E29F1EE3500B3611B /* PaddingLabel.swift */; };
+		1BFF533329F1EFA300B3611B /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF533129F1EFA300B3611B /* DescriptionViewController.swift */; };
+		1BFF533429F1EFA300B3611B /* DescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BFF533229F1EFA300B3611B /* DescriptionViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,19 +37,21 @@
 		1BFF52DA29F09AB400B3611B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BFF52FE29F09BFD00B3611B /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		1BFF52FF29F09BFD00B3611B /* MessageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageViewController.xib; sourceTree = "<group>"; };
-		1BFF530529F09E1400B3611B /* MessageCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCollectionViewDataSource.swift; sourceTree = "<group>"; };
-		1BFF530729F09E2000B3611B /* MessageCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCollectionViewDelegate.swift; sourceTree = "<group>"; };
+		1BFF530529F09E1400B3611B /* MessageTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewDataSource.swift; sourceTree = "<group>"; };
+		1BFF530729F09E2000B3611B /* MessageTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewDelegate.swift; sourceTree = "<group>"; };
 		1BFF530C29F09F3900B3611B /* MessagesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesRequest.swift; sourceTree = "<group>"; };
 		1BFF530E29F09F4500B3611B /* MessagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesService.swift; sourceTree = "<group>"; };
 		1BFF531229F09F8200B3611B /* MessageModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModuleBuilder.swift; sourceTree = "<group>"; };
-		1BFF531529F09FDA00B3611B /* MessageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRouter.swift; sourceTree = "<group>"; };
 		1BFF531829F0A0EB00B3611B /* MessagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePresenter.swift; sourceTree = "<group>"; };
 		1BFF531A29F0A33F00B3611B /* MessagesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesModel.swift; sourceTree = "<group>"; };
-		1BFF531D29F1494700B3611B /* MessageCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCollectionCell.swift; sourceTree = "<group>"; };
-		1BFF531E29F1494700B3611B /* MessageCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCollectionCell.xib; sourceTree = "<group>"; };
 		1BFF532229F188EC00B3611B /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		1BFF532429F1A0A200B3611B /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
-		1BFF532629F1AE8F00B3611B /* MessageCollectionViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCollectionViewAdapter.swift; sourceTree = "<group>"; };
+		1BFF532629F1AE8F00B3611B /* MessageTableViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewAdapter.swift; sourceTree = "<group>"; };
+		1BFF532A29F1E91100B3611B /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		1BFF532B29F1E91100B3611B /* MessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageTableViewCell.xib; sourceTree = "<group>"; };
+		1BFF532E29F1EE3500B3611B /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		1BFF533129F1EFA300B3611B /* DescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
+		1BFF533229F1EFA300B3611B /* DescriptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescriptionViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +84,7 @@
 		1BFF52CB29F09AB300B3611B /* InvoltaTestovoe */ = {
 			isa = PBXGroup;
 			children = (
-				1BFF532129F188DD00B3611B /* Extensions */,
+				1BFF533029F1EF6000B3611B /* DescriptionView */,
 				1BFF531029F09F5A00B3611B /* MessagesModule */,
 				1BFF530B29F09F2A00B3611B /* Network */,
 				1BFF530229F09CAF00B3611B /* Source */,
@@ -92,6 +96,7 @@
 		1BFF530229F09CAF00B3611B /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				1BFF532129F188DD00B3611B /* Extensions+Reusable */,
 				1BFF52CC29F09AB300B3611B /* AppDelegate.swift */,
 				1BFF52D529F09AB400B3611B /* Assets.xcassets */,
 				1BFF52D729F09AB400B3611B /* LaunchScreen.storyboard */,
@@ -102,7 +107,7 @@
 		1BFF530329F09CCA00B3611B /* MessageViewController */ = {
 			isa = PBXGroup;
 			children = (
-				1BFF531C29F148F100B3611B /* MessageCollectionCell */,
+				1BFF531C29F148F100B3611B /* MessageTableCell */,
 				1BFF530429F09DF300B3611B /* MessageCollectionViewSource */,
 				1BFF52FE29F09BFD00B3611B /* MessageViewController.swift */,
 				1BFF52FF29F09BFD00B3611B /* MessageViewController.xib */,
@@ -113,9 +118,9 @@
 		1BFF530429F09DF300B3611B /* MessageCollectionViewSource */ = {
 			isa = PBXGroup;
 			children = (
-				1BFF530529F09E1400B3611B /* MessageCollectionViewDataSource.swift */,
-				1BFF530729F09E2000B3611B /* MessageCollectionViewDelegate.swift */,
-				1BFF532629F1AE8F00B3611B /* MessageCollectionViewAdapter.swift */,
+				1BFF530529F09E1400B3611B /* MessageTableViewDataSource.swift */,
+				1BFF530729F09E2000B3611B /* MessageTableViewDelegate.swift */,
+				1BFF532629F1AE8F00B3611B /* MessageTableViewAdapter.swift */,
 			);
 			path = MessageCollectionViewSource;
 			sourceTree = "<group>";
@@ -134,7 +139,6 @@
 			isa = PBXGroup;
 			children = (
 				1BFF531129F09F6600B3611B /* MessageModuleBuilder */,
-				1BFF531429F09FC700B3611B /* MessageRouter */,
 				1BFF531729F0A0AF00B3611B /* MessagePresenter */,
 				1BFF530329F09CCA00B3611B /* MessageViewController */,
 			);
@@ -149,14 +153,6 @@
 			path = MessageModuleBuilder;
 			sourceTree = "<group>";
 		};
-		1BFF531429F09FC700B3611B /* MessageRouter */ = {
-			isa = PBXGroup;
-			children = (
-				1BFF531529F09FDA00B3611B /* MessageRouter.swift */,
-			);
-			path = MessageRouter;
-			sourceTree = "<group>";
-		};
 		1BFF531729F0A0AF00B3611B /* MessagePresenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,22 +161,32 @@
 			path = MessagePresenter;
 			sourceTree = "<group>";
 		};
-		1BFF531C29F148F100B3611B /* MessageCollectionCell */ = {
+		1BFF531C29F148F100B3611B /* MessageTableCell */ = {
 			isa = PBXGroup;
 			children = (
-				1BFF531D29F1494700B3611B /* MessageCollectionCell.swift */,
-				1BFF531E29F1494700B3611B /* MessageCollectionCell.xib */,
+				1BFF532A29F1E91100B3611B /* MessageTableViewCell.swift */,
+				1BFF532B29F1E91100B3611B /* MessageTableViewCell.xib */,
 			);
-			path = MessageCollectionCell;
+			path = MessageTableCell;
 			sourceTree = "<group>";
 		};
-		1BFF532129F188DD00B3611B /* Extensions */ = {
+		1BFF532129F188DD00B3611B /* Extensions+Reusable */ = {
 			isa = PBXGroup;
 			children = (
 				1BFF532229F188EC00B3611B /* UITextField.swift */,
 				1BFF532429F1A0A200B3611B /* UIViewController.swift */,
+				1BFF532E29F1EE3500B3611B /* PaddingLabel.swift */,
 			);
-			path = Extensions;
+			path = "Extensions+Reusable";
+			sourceTree = "<group>";
+		};
+		1BFF533029F1EF6000B3611B /* DescriptionView */ = {
+			isa = PBXGroup;
+			children = (
+				1BFF533129F1EFA300B3611B /* DescriptionViewController.swift */,
+				1BFF533229F1EFA300B3611B /* DescriptionViewController.xib */,
+			);
+			path = DescriptionView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,9 +248,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BFF52D929F09AB400B3611B /* LaunchScreen.storyboard in Resources */,
+				1BFF532D29F1E91100B3611B /* MessageTableViewCell.xib in Resources */,
 				1BFF52D629F09AB400B3611B /* Assets.xcassets in Resources */,
+				1BFF533429F1EFA300B3611B /* DescriptionViewController.xib in Resources */,
 				1BFF530129F09BFD00B3611B /* MessageViewController.xib in Resources */,
-				1BFF532029F1494700B3611B /* MessageCollectionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,18 +262,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BFF530629F09E1400B3611B /* MessageCollectionViewDataSource.swift in Sources */,
-				1BFF530829F09E2000B3611B /* MessageCollectionViewDelegate.swift in Sources */,
+				1BFF530629F09E1400B3611B /* MessageTableViewDataSource.swift in Sources */,
+				1BFF530829F09E2000B3611B /* MessageTableViewDelegate.swift in Sources */,
 				1BFF531929F0A0EB00B3611B /* MessagePresenter.swift in Sources */,
 				1BFF531329F09F8200B3611B /* MessageModuleBuilder.swift in Sources */,
 				1BFF531B29F0A33F00B3611B /* MessagesModel.swift in Sources */,
 				1BFF532329F188EC00B3611B /* UITextField.swift in Sources */,
+				1BFF532F29F1EE3500B3611B /* PaddingLabel.swift in Sources */,
 				1BFF530029F09BFD00B3611B /* MessageViewController.swift in Sources */,
+				1BFF532C29F1E91100B3611B /* MessageTableViewCell.swift in Sources */,
 				1BFF532529F1A0A200B3611B /* UIViewController.swift in Sources */,
-				1BFF532729F1AE8F00B3611B /* MessageCollectionViewAdapter.swift in Sources */,
-				1BFF531F29F1494700B3611B /* MessageCollectionCell.swift in Sources */,
+				1BFF532729F1AE8F00B3611B /* MessageTableViewAdapter.swift in Sources */,
 				1BFF530F29F09F4500B3611B /* MessagesService.swift in Sources */,
-				1BFF531629F09FDA00B3611B /* MessageRouter.swift in Sources */,
+				1BFF533329F1EFA300B3611B /* DescriptionViewController.swift in Sources */,
 				1BFF52CD29F09AB300B3611B /* AppDelegate.swift in Sources */,
 				1BFF530D29F09F3900B3611B /* MessagesRequest.swift in Sources */,
 			);

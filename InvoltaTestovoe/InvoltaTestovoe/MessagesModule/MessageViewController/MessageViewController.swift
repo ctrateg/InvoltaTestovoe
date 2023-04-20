@@ -29,11 +29,11 @@ final class MessageViewController: UIViewController {
     // MARK: - IBOutlets
 
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet private weak var collectionViewButtonSpace: NSLayoutConstraint!
     @IBOutlet private weak var textFieldButtonSpace: NSLayoutConstraint!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var messageField: UITextField!
-    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var tableViewButtonSpace: NSLayoutConstraint!
 
     // MARK: - Properties
 
@@ -41,7 +41,7 @@ final class MessageViewController: UIViewController {
 
     // MARK: - Private Properties
 
-    private lazy var adapter = MessageCollectionViewAdapter(collectionView: collectionView)
+    private lazy var adapter = MessageTableViewAdapter(tableView: tableView)
 
     // MARK: - Lifecycle
 
@@ -49,6 +49,11 @@ final class MessageViewController: UIViewController {
         super.viewDidLoad()
         addObservers()
         presenter?.viewDidLoad()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
     }
 
 }
@@ -64,7 +69,7 @@ extension MessageViewController: UITextFieldDelegate {
             !text.isEmpty
         {
             adapter.addMessage(text: text)
-            collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
         }
         textField.text = ""
         return true
@@ -77,7 +82,7 @@ extension MessageViewController: UITextFieldDelegate {
 extension MessageViewController: MessageViewDelegate {
 
     func setupInitialState() {
-        configureMessageCollectionView()
+        configureTableView()
         configureTitle()
         configureTextField()
         hideKeyboardWhenTappedAround()
@@ -88,10 +93,9 @@ extension MessageViewController: MessageViewDelegate {
         if let messages = messages {
             adapter.updateMessage(with: messages)
             loadingState(false)
-            collectionView.reloadData()
+            tableView.reloadData()
         }
     }
-    
     
 }
 
@@ -99,7 +103,13 @@ extension MessageViewController: MessageViewDelegate {
 
 private extension MessageViewController {
 
-    func configureMessageCollectionView() {
+    func configureTableView() {
+        adapter.didSelectItem = { [weak self] message in
+            let viewController = DescriptionViewController()
+            viewController.modalPresentationStyle = .fullScreen
+            viewController.titleMessage = message
+            self?.navigationController?.pushViewController(viewController, animated: true)
+        }
         adapter.configure()
     }
 
@@ -143,7 +153,7 @@ private extension MessageViewController {
             if self.textFieldButtonSpace.constant == .zero {
                 UIView.animate(withDuration: notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double ?? .zero) {
                     self.textFieldButtonSpace.constant += keyboardSize.height - Constants.textFieldKeyboardOffset
-                    self.collectionViewButtonSpace.constant += keyboardSize.height - Constants.textFieldKeyboardOffset
+                    self.tableViewButtonSpace.constant += keyboardSize.height - Constants.textFieldKeyboardOffset
                     self.view.layoutIfNeeded()
                 }
             }
@@ -154,7 +164,7 @@ private extension MessageViewController {
         if textFieldButtonSpace.constant != .zero {
             UIView.animate(withDuration: notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double ?? .zero) {
                 self.textFieldButtonSpace.constant = .zero
-                self.collectionViewButtonSpace.constant = 40
+                self.tableViewButtonSpace.constant = 40
                 self.view.layoutIfNeeded()
             }
         }

@@ -13,12 +13,9 @@ final class MessageModuleBuilder {
 
     func build() -> UIViewController {
         let viewController = MessageViewController()
-        let router = MessageRouter()
         let presenter = MessagePresenter(messageService: MessagesService())
 
-        presenter.router = router
         presenter.view = viewController
-        router.view = viewController
         viewController.presenter = presenter
         
         return viewController
