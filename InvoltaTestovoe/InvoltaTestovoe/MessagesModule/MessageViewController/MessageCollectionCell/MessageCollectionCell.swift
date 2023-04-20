@@ -33,12 +33,18 @@ final class MessageCollectionCell: UICollectionViewCell {
     }
 
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        super.preferredLayoutAttributesFitting(layoutAttributes)
         textLabel.preferredMaxLayoutWidth = layoutAttributes.size.width - contentView.layoutMargins.left - contentView.layoutMargins.left
         layoutAttributes.bounds.size.height = systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
-        layoutAttributes.bounds.size.width = systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).width
-        
+
         transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+
         return layoutAttributes
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        textLabel.text = ""
     }
 
 }
@@ -49,7 +55,7 @@ extension MessageCollectionCell {
 
     func setupInitialState() {
         textLabel.numberOfLines = .zero
-        textLabel.textAlignment = .right
+        textLabel.textAlignment = .center
         textLabel.textColor = .black
         
         backgroundColor = .gray

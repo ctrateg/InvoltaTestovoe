@@ -9,6 +9,13 @@ import UIKit
 
 final class MessageCollectionViewAdapter {
 
+    // MARK: - Constants
+    
+    private enum Constants {
+        static let contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        static let minimumInteritemSpacing: CGFloat = 16
+    }
+
     // MARK: - Private Properties
 
     private var collectionView: UICollectionView
@@ -32,9 +39,7 @@ final class MessageCollectionViewAdapter {
     }
 
     func addMessage(text: String) {
-        let cell = MessageCollectionCell()
-        cell.configure(message: text)
-        collectionView.a
+        collectionDataSource.addMessage(text: text)
     }
 
 }
@@ -61,12 +66,10 @@ private extension MessageCollectionViewAdapter {
 
     func configureCollectionLayout() {
         let layout = UICollectionViewFlowLayout()
-        // layout.itemSize = CGSize(width: 300, height: 40)
-        layout.minimumInteritemSpacing = 16
+        layout.minimumInteritemSpacing = Constants.minimumInteritemSpacing
         layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 120)
+        layout.sectionInset = Constants.contentEdgeInsets
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        layout.sectionInsetReference = .fromLayoutMargins
         collectionView.collectionViewLayout = layout
     }
 

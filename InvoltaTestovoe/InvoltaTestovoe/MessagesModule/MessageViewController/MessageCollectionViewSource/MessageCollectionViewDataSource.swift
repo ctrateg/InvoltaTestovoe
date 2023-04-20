@@ -36,6 +36,13 @@ final class MessageCollectionViewDataSource: NSObject, UICollectionViewDataSourc
         self.collectionView = collectionView
     }
 
+    // MARK: - Methods
+
+    func addMessage(text: String) {
+        workingMessages = [text] + workingMessages
+        collectionView?.reloadData()
+    }
+
     // MARK: - UICollectionViewDataSource
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -50,6 +57,8 @@ final class MessageCollectionViewDataSource: NSObject, UICollectionViewDataSourc
         }
 
         cell.configure(message: workingMessages[indexPath.row])
+    
+        cell.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
 
         return cell
     }

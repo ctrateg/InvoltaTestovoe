@@ -59,6 +59,13 @@ extension MessageViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        if
+            let text = textField.text,
+            !text.isEmpty
+        {
+            adapter.addMessage(text: text)
+            collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+        }
         textField.text = ""
         return true
     }
