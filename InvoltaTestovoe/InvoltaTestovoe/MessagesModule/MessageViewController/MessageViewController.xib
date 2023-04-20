@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MessageViewController" customModule="InvoltaTestovoe" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="Z11-Aj-2q4" id="PCk-lP-Ktu"/>
                 <outlet property="collectionView" destination="ICb-AM-Tfb" id="BhS-yy-iB3"/>
                 <outlet property="collectionViewButtonSpace" destination="Uwh-42-bNY" id="QEF-eq-qfp"/>
                 <outlet property="messageField" destination="IND-5Z-CH8" id="vaB-yf-nNd"/>
@@ -23,7 +24,7 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ICb-AM-Tfb">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" semanticContentAttribute="playback" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ICb-AM-Tfb">
                     <rect key="frame" x="0.0" y="59" width="393" height="719"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="teT-o2-Vi5">
@@ -54,21 +55,38 @@
                     <rect key="frame" x="0.0" y="0.0" width="393" height="59"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Z11-Aj-2q4">
+                    <rect key="frame" x="146.66666666666666" y="376" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="Zyl-wm-5Da"/>
+                        <constraint firstAttribute="height" constant="100" id="gZg-Bs-Kol"/>
+                    </constraints>
+                </activityIndicatorView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vn1-Mo-zdb">
+                    <rect key="frame" x="0.0" y="818" width="393" height="34"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="eNA-zr-uSV" secondAttribute="trailing" id="2hf-kZ-hBo"/>
+                <constraint firstItem="Z11-Aj-2q4" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="5Pu-46-wRP"/>
                 <constraint firstItem="eNA-zr-uSV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="6f5-jA-QtE"/>
                 <constraint firstItem="of5-U5-ZTQ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="7Kd-Sa-TlJ"/>
                 <constraint firstItem="ICb-AM-Tfb" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="7Rc-UO-Ihn"/>
+                <constraint firstItem="Z11-Aj-2q4" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="B60-R9-k7d"/>
                 <constraint firstAttribute="trailing" secondItem="IND-5Z-CH8" secondAttribute="trailing" id="EFz-dx-swk"/>
                 <constraint firstItem="ICb-AM-Tfb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Oss-Cl-qR6"/>
+                <constraint firstItem="Vn1-Mo-zdb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Pfj-ln-WOc"/>
                 <constraint firstItem="eNA-zr-uSV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="QN2-Py-TGw"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ICb-AM-Tfb" secondAttribute="bottom" constant="40" id="Uwh-42-bNY"/>
                 <constraint firstItem="IND-5Z-CH8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="YKv-if-1my"/>
+                <constraint firstAttribute="trailing" secondItem="Vn1-Mo-zdb" secondAttribute="trailing" id="ZAp-JY-oSl"/>
+                <constraint firstItem="Vn1-Mo-zdb" firstAttribute="top" secondItem="IND-5Z-CH8" secondAttribute="bottom" id="abJ-lW-MG7"/>
                 <constraint firstItem="of5-U5-ZTQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ha1-vP-Uf0"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="IND-5Z-CH8" secondAttribute="bottom" id="n1S-k0-VGy"/>
+                <constraint firstAttribute="bottom" secondItem="Vn1-Mo-zdb" secondAttribute="bottom" id="oiR-p6-g8x"/>
                 <constraint firstItem="ICb-AM-Tfb" firstAttribute="top" secondItem="eNA-zr-uSV" secondAttribute="bottom" id="uty-na-nfm"/>
                 <constraint firstAttribute="trailing" secondItem="of5-U5-ZTQ" secondAttribute="trailing" id="vYk-6W-Jy7"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ICb-AM-Tfb" secondAttribute="trailing" id="vZ7-VF-IO4"/>

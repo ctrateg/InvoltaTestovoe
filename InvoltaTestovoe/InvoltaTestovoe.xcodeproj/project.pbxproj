@@ -24,6 +24,7 @@
 		1BFF532029F1494700B3611B /* MessageCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BFF531E29F1494700B3611B /* MessageCollectionCell.xib */; };
 		1BFF532329F188EC00B3611B /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF532229F188EC00B3611B /* UITextField.swift */; };
 		1BFF532529F1A0A200B3611B /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF532429F1A0A200B3611B /* UIViewController.swift */; };
+		1BFF532729F1AE8F00B3611B /* MessageCollectionViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF532629F1AE8F00B3611B /* MessageCollectionViewAdapter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		1BFF531E29F1494700B3611B /* MessageCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCollectionCell.xib; sourceTree = "<group>"; };
 		1BFF532229F188EC00B3611B /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		1BFF532429F1A0A200B3611B /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		1BFF532629F1AE8F00B3611B /* MessageCollectionViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCollectionViewAdapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 			children = (
 				1BFF530529F09E1400B3611B /* MessageCollectionViewDataSource.swift */,
 				1BFF530729F09E2000B3611B /* MessageCollectionViewDelegate.swift */,
+				1BFF532629F1AE8F00B3611B /* MessageCollectionViewAdapter.swift */,
 			);
 			path = MessageCollectionViewSource;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				1BFF532329F188EC00B3611B /* UITextField.swift in Sources */,
 				1BFF530029F09BFD00B3611B /* MessageViewController.swift in Sources */,
 				1BFF532529F1A0A200B3611B /* UIViewController.swift in Sources */,
+				1BFF532729F1AE8F00B3611B /* MessageCollectionViewAdapter.swift in Sources */,
 				1BFF531F29F1494700B3611B /* MessageCollectionCell.swift in Sources */,
 				1BFF530F29F09F4500B3611B /* MessagesService.swift in Sources */,
 				1BFF531629F09FDA00B3611B /* MessageRouter.swift in Sources */,

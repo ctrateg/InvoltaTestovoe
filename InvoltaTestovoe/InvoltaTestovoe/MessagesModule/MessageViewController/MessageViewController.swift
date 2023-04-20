@@ -20,13 +20,15 @@ final class MessageViewController: UIViewController {
     
     private enum Constants {
         static let titleText = "Тестовое задание"
+        static let placeholderText = "Сообщение"
         static let titleFont: CGFloat = 18
-        static let textInFieldPadding: CGFloat = 14
+        static let textInFieldPadding: CGFloat = 20
         static let textFieldKeyboardOffset: CGFloat = 35
     }
 
     // MARK: - IBOutlets
 
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet private weak var collectionViewButtonSpace: NSLayoutConstraint!
     @IBOutlet private weak var textFieldButtonSpace: NSLayoutConstraint!
     @IBOutlet private weak var titleLabel: UILabel!
@@ -36,11 +38,10 @@ final class MessageViewController: UIViewController {
     // MARK: - Properties
 
     var presenter: MessagePresenterDelegate?
-    
+
     // MARK: - Private Properties
 
-    private lazy var collectionDataSource = MessageCollectionViewDataSource(collectionView: collectionView)
-    private lazy var collectionDelegate = MessageCollectionViewDelegate()
+    private lazy var adapter = MessageCollectionViewAdapter(collectionView: collectionView)
 
     // MARK: - Lifecycle
 
@@ -76,8 +77,12 @@ extension MessageViewController: MessageViewDelegate {
     }
     
     func updateScreen(messages: [String]?) {
-        collectionDataSource.messages = messages
-        collectionView.reloadData()
+        loadingState(true)
+        if let messages = messages {
+            adapter.updateMessage(with: messages)
+            loadingState(false)
+            collectionView.reloadData()
+        }
     }
     
     
@@ -88,25 +93,7 @@ extension MessageViewController: MessageViewDelegate {
 private extension MessageViewController {
 
     func configureMessageCollectionView() {
-        let cellNib = UINib(nibName: "MessageCollectionCell", bundle: nil)
-        collectionView.register(cellNib, forCellWithReuseIdentifier: "MessageCollectionCell")
-        collectionView.transform = CGAffineTransform.init(rotationAngle: (-(CGFloat)(Double.pi)))
-        collectionView.backgroundColor = .systemMint
-        collectionView.dataSource = collectionDataSource
-        collectionView.delegate = collectionDelegate
-    
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.clipsToBounds = false
-        collectionView.isPagingEnabled = true
-
-        let layout = UICollectionViewFlowLayout()
-        // layout.itemSize = CGSize(width: 300, height: 40)
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width - 16, height: 50)
-        layout.minimumInteritemSpacing = 16
-        layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        collectionView.collectionViewLayout = layout
+        adapter.configure()
     }
 
     func configureTitle() {
@@ -117,12 +104,19 @@ private extension MessageViewController {
     }
 
     func configureTextField() {
+        messageField.placeholder = Constants.placeholderText
         messageField.delegate = self
         messageField.keyboardType = .default
         messageField.borderStyle = .none
         messageField.backgroundColor = .white
         messageField.setLeftPaddingPoints(Constants.textInFieldPadding)
         messageField.setRightPaddingPoints(Constants.textInFieldPadding)
+    }
+
+    func loadingState(_ isLoading: Bool) {
+        isLoading ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
+        activityIndicator.isHidden = !isLoading
+        messageField.isEnabled = !isLoading
     }
 
     func addObservers() {

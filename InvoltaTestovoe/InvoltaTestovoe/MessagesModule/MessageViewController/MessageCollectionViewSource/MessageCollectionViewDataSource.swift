@@ -49,8 +49,6 @@ final class MessageCollectionViewDataSource: NSObject, UICollectionViewDataSourc
             return UICollectionViewCell()
         }
 
-        cell.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
-
         cell.configure(message: workingMessages[indexPath.row])
 
         return cell

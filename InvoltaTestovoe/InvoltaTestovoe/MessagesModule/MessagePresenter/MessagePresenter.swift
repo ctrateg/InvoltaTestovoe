@@ -20,7 +20,7 @@ final class MessagePresenter {
     
     private enum Constants {
         static let defaultOffset = "0"
-        static let baseCountMessages = 12
+        static let baseCountMessages = 14
     }
     
     // MARK: - Properties

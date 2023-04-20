@@ -16,19 +16,30 @@ final class MessageCollectionViewDelegate: NSObject, CollectionViewSelectableIte
     // MARK: - Properties
 
     var didSelectItem: ((IndexPath) -> Void)?
-    var didPaggination: ((String)->())?
+//    var didPaggination: ((String)->())?
 
-    // MARK: - Private Properties
-
-    private weak var collectionView: UICollectionView?
-//    private var isPageRefreshing = false
-//    private var pagginationOffset = 0
-
-    // MARK: - Initialization
-
-    init(collectionView: UICollectionView) {
-        self.collectionView = collectionView
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let sectionInset = (collectionViewLayout as! UICollectionViewFlowLayout).sectionInset
+        let referenceHeight: CGFloat = 100 
+        let referenceWidth = collectionView.safeAreaLayoutGuide.layoutFrame.width
+             - sectionInset.left
+            - sectionInset.right
+            - collectionView.contentInset.left
+            - collectionView.contentInset.right
+        return CGSize(width: referenceWidth, height: referenceHeight)
     }
+
+//    // MARK: - Private Properties
+//
+//    private weak var collectionView: UICollectionView?
+////    private var isPageRefreshing = false
+////    private var pagginationOffset = 0
+//
+//    // MARK: - Initialization
+//
+//    init(collectionView: UICollectionView) {
+//        self.collectionView = collectionView
+//    }
 
     // MARK: - CollectionViewSelectableItemDelegate
     
