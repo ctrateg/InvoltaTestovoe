@@ -10,11 +10,17 @@ import Foundation
 protocol MessagePresenterDelegate {
     /// Notify presenter that view is ready
     func viewDidLoad()
-    /// Notify presenter that view did appear
-    func viewDidAppear()
+    /// Update data
+    func update(offset: String)
 }
 
 final class MessagePresenter {
+
+    // MARK: - Constants
+    
+    private enum Constants {
+        static let defaultOffset = "0"
+    }
     
     // MARK: - Properties
 
@@ -25,7 +31,7 @@ final class MessagePresenter {
 
     private let messageService: MessagesServiceDelegate
 
-    // MARK: - Init
+    // MARK: - Initialization
 
     init(messageService: MessagesServiceDelegate) {
         self.messageService = messageService
@@ -38,14 +44,16 @@ final class MessagePresenter {
 extension MessagePresenter: MessagePresenterDelegate {
 
     func viewDidLoad() {
-        messageService.getMessages(offSet: "0") { result in
-            print(result)
+        view?.setupInitialState()
+        update(offset: Constants.defaultOffset)
+    }
+
+    func update(offset: String) {
+        messageService.getMessages(offSet: offset) { model in
+            DispatchQueue.main.async(flags: .barrier) {
+                self.view?.updateScreen(messages: model.result)
+            }
         }
     }
-    
-    func viewDidAppear() {
-        
-    }
-    
     
 }

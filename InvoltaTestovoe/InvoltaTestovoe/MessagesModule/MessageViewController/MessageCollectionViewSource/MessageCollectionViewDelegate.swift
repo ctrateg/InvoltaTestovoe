@@ -7,6 +7,6 @@
 
 import UIKit
 
-final class MessageCollectionViewDelegate {
-    
+final class MessageCollectionViewDelegate: NSObject, UICollectionViewDelegate {
+
 }

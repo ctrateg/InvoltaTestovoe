@@ -7,6 +7,6 @@
 
 import UIKit
 
-final class MessageCollectionViewFlowLayout {
-    
+final class MessageCollectionViewLayout: UICollectionViewLayout {
+
 }
