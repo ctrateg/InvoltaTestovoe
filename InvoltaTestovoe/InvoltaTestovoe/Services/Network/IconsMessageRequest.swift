@@ -1,5 +1,5 @@
 //
-//  IconMessageRequest.swift
+//  IconsMessageRequest.swift
 //  InvoltaTestovoe
 //
 //  Created by Евгений Васильев on 23.04.2023.
@@ -7,22 +7,22 @@
 
 import Foundation
 
-import Foundation
+import UIKit
 
-final class IconMessageRequest {
+final class IconsMessageRequest {
 
     // MARK: - Constants
 
     private enum Constants {
-        static let domain = "https://numia.ru/api/"
-        static let methods = "getMessages"
-        static let offSet = "offset"
+        static let domain = "https://rickandmortyapi.com/api/"
+        static let type = "character/"
+        static let page = "page"
     }
 
     // MARK: - Methods
 
-    func getIcon(offSet: String, completion: @escaping RequestBlock<String>) {
-        let stringUrl = "\(Constants.domain)" + "\(Constants.methods)" + "?" + "\(Constants.offSet)" + "=" + "\(offSet)"
+    func getIcon(page: String, completion: @escaping RequestBlock<String>) {
+        let stringUrl = "\(Constants.domain)" + "\(Constants.type)" + "?" + "\(Constants.page)" + "=" + "\(page)"
         guard let url = URL(string: stringUrl) else { return }
         
         let params = URLSessionConfiguration.default
@@ -34,8 +34,8 @@ final class IconMessageRequest {
         URLSession(configuration: params).dataTask(with: url) { (data, _, error) in
             if let data = data {
                 do {
-                    let returnData = try JSONDecoder().decode(MessagesRequestModel.self, from: data)
-                    let stringsResult = returnData.result
+                    let returnData = try JSONDecoder().decode(RickAndMortyModel.self, from: data)
+                    let stringsResult = returnData.results?.compactMap { $0.image }
             
                     DispatchQueue.main.async {
                         completion(.success(Array(stringsResult ?? [])))

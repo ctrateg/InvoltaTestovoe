@@ -9,6 +9,7 @@ import Foundation
 
 protocol MessagesServiceDelegate {
     func getMessages(offSet: String, completion: @escaping RequestBlock<String>)
+    func getIcon(page: Int, completion: @escaping RequestBlock<String>)
 }
 
 final class MessagesService: MessagesServiceDelegate {
@@ -19,6 +20,10 @@ final class MessagesService: MessagesServiceDelegate {
 
     func getMessages(offSet: String, completion: @escaping RequestBlock<String>) {
         MessageRequest().getMessages(offSet: offSet, completion: completion)
+    }
+
+    func getIcon(page: Int, completion: @escaping RequestBlock<String>) {
+        IconsMessageRequest().getIcon(page: String(page), completion: completion)
     }
 
 }

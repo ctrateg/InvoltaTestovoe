@@ -20,7 +20,7 @@ final class MessageTableViewDelegate: NSObject, MessageViewSelectableDelegate {
     
     private enum Constants {
         static let spinnerHeight: CGFloat = 44
-        static let offSetForRequests = 20
+        static let offSetForMessageRequests = 20
     }
 
     // MARK: - Properties
@@ -31,7 +31,8 @@ final class MessageTableViewDelegate: NSObject, MessageViewSelectableDelegate {
 
     // MARK: - Private Properties
 
-    private var offSetForRequests: Int = .zero
+    private var offSetForMessageRequests: Int = .zero
+    private var pagesForIconRequest = 0
     
     // MARK: - UITableViewDelegate
 
@@ -51,8 +52,8 @@ final class MessageTableViewDelegate: NSObject, MessageViewSelectableDelegate {
 
             tableView.tableFooterView = spinner
             tableView.tableFooterView?.isHidden = false
-            offSetForRequests += Constants.offSetForRequests
-            didLoadMore?(offSetForRequests)
+            offSetForMessageRequests += Constants.offSetForMessageRequests
+            didLoadMore?(offSetForMessageRequests)
         }
     }
 

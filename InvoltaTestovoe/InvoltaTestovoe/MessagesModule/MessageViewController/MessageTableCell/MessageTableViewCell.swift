@@ -19,7 +19,7 @@ final class MessageTableViewCell: UITableViewCell {
     // MARK: - Properties
 
     private(set) var message: String?
-    private(set) var image: UIImage?
+    private(set) var iconUrl: String?
 
     // MARK: - IBOutlets
 
@@ -51,15 +51,17 @@ final class MessageTableViewCell: UITableViewCell {
 
     // MARK: - Methods
 
-    func configure(message: String) {
+    func configure(message: String, iconUrl: String) {
         messageLabel.text = message
         self.message = message
+        configureIconView(iconUrl: iconUrl)
         transform = CGAffineTransform(rotationAngle: CGFloat.pi)
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
         messageLabel.text = ""
+        iconView.image = nil
     }
 
 }
@@ -76,11 +78,16 @@ extension MessageTableViewCell {
         messageLabel.paddingLeft = Constants.padding
         messageLabel.paddingRight = Constants.padding
 
-        iconView.layer.cornerRadius = iconView.frame.size.width/2
-
         opaqueView.backgroundColor = .lightGray
         opaqueView.layer.cornerRadius = Constants.cornerRadius
 
         backgroundColor = .systemMint
     }
+
+    func configureIconView(iconUrl: String?) {
+        guard let stringUrl = iconUrl, let url = URL(string: stringUrl) else { return }
+        iconView.load(url: url)
+        iconView.layer.cornerRadius = iconView.frame.size.width/2
+    }
+
 }

@@ -8,9 +8,5 @@
 import Foundation
 
 struct MessagesRequestModel: Codable {
-
-    // MARK: - Properties
-
     var result: [String]?
-
 }

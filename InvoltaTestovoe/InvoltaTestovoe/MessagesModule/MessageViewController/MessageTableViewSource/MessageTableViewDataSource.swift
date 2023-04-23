@@ -9,6 +9,7 @@ import UIKit
 
 protocol MessageDataSource: UITableViewDataSource {
     var messages: [String]? { get set }
+    var iconsUrl: [String]? { get set }
     var didReloadTable: EmptyBlock? { get set }
     func addMessage(text: String)
     func clearData()
@@ -24,36 +25,25 @@ final class MessageTableViewDataSource: NSObject, MessageDataSource {
 
     // MARK: - Properties
 
-    var messages: [String]? {
-        get {
-            return workingMessages
-        }
-        set {
-            workingMessages.append(contentsOf: newValue ?? [])
-        }
-    }
-
+    var messages: [String]?
+    var iconsUrl: [String]?
     var didReloadTable: EmptyBlock?
-
-    // MARK: - Private Properties
-
-    private var workingMessages: [String] = []
 
     // MARK: - Methods
 
     func addMessage(text: String) {
-        workingMessages = [text] + workingMessages
+        messages = [text] + (messages ?? [])
         didReloadTable?()
     }
 
     func clearData() {
-        workingMessages = []
+        messages = []
     }
 
     // MARK: - UITableViewDataSource
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return workingMessages.count
+        return messages?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -62,9 +52,13 @@ final class MessageTableViewDataSource: NSObject, MessageDataSource {
         else {
             return UITableViewCell()
         }
-
-        cell.configure(message: workingMessages[indexPath.row])
-        cell.selectionStyle = .none
+        if
+            let messages = self.messages,
+            let iconsUrl = self.iconsUrl
+        {
+            cell.configure(message: messages[indexPath.row], iconUrl: iconsUrl[indexPath.row])
+            cell.selectionStyle = .none
+        }
 
         return cell
     }

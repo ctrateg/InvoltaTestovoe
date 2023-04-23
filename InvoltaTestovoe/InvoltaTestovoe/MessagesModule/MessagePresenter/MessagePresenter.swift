@@ -14,7 +14,7 @@ protocol MessagePresenterDelegate {
     /// Setup data
     func setupData()
     /// Update data
-    func updateData(offset: String)
+    func updateData(offSet: String)
     /// Add message for storage
     func addNewMessage(message: String)
     /// Delete message from storage
@@ -28,6 +28,7 @@ final class MessagePresenter {
     private enum Constants {
         static let defaultOffset = "0"
         static let baseCountMessages = 14
+        static let offSetStep = 20
     }
     
     // MARK: - Properties
@@ -37,8 +38,13 @@ final class MessagePresenter {
     // MARK: - Private Properties
 
     private let messageService: MessagesServiceDelegate
+    private let group = DispatchGroup()
+
     private var localMessagesModel: [MessageStorageModel] = []
     private var messages: [String] = []
+    private var iconsUrl: [String] = []
+    private var page = 0
+    private var offSet = 20
 
     // MARK: - Initialization
 
@@ -59,30 +65,45 @@ extension MessagePresenter: MessagePresenterDelegate {
 
     func setupData() {
         view?.loadingState(true)
-        self.messageService.getMessages(offSet: Constants.defaultOffset) { [weak self] response in
+
+        getIcons()
+
+        group.enter()
+        messageService.getMessages(offSet: Constants.defaultOffset) { [weak self] response in
             switch response {
             case .success(let result):
+                guard let self = self else { return }
                 let localMessagesModel = StorageService.shared.load()
                 let localMessages = localMessagesModel.map { $0.message }.compactMap{ $0 }
-                self?.localMessagesModel = localMessagesModel
-                self?.messages = localMessages + (result )
-                self?.view?.updateScreen(messages: localMessages + result)
-                self?.view?.loadingState(false)
+                let messages = localMessages + result
+                self.localMessagesModel = localMessagesModel
+                self.messages = messages
+                self.view?.updateScreen(messages: Array(messages.prefix(self.offSet)), iconsUrl: self.iconsUrl)
+                self.view?.loadingState(false)
             case .failure(_):
                 self?.view?.openErrorScreen()
             }
+            self?.group.leave()
         }
+
     }
 
-    func updateData(offset: String) {
-        self.messageService.getMessages(offSet: offset) { [weak self] response in
+    func updateData(offSet: String) {
+        page += 1
+        self.offSet += Constants.offSetStep
+        getIcons()
+
+        group.enter()
+        self.messageService.getMessages(offSet: offSet) { [weak self] response in
+            guard let self = self else { return }
             switch response {
             case .success(let result):
-                self?.messages += result
-                self?.view?.updateScreen(messages: self?.messages)
+                self.messages += result
+                self.view?.updateScreen(messages: Array(self.messages.prefix(self.offSet)), iconsUrl: self.iconsUrl)
             case .failure(let error):
                 print(error)
             }
+            self.group.leave()
         }
     }
 
@@ -99,7 +120,26 @@ extension MessagePresenter: MessagePresenterDelegate {
         }
 
         messages.remove(at: index)
-        view?.updateScreen(messages: messages)
+        view?.updateScreen(messages: messages, iconsUrl: iconsUrl)
     }
     
+}
+
+// MARK: - Private Properties
+
+private extension MessagePresenter {
+
+    func getIcons() {
+        group.enter()
+        messageService.getIcon(page: page) { [weak self] response in
+            switch response {
+            case .success(let result):
+                self?.iconsUrl += result
+            case .failure(_):
+                self?.view?.openErrorScreen()
+            }
+            self?.group.leave()
+        }
+    }
+
 }

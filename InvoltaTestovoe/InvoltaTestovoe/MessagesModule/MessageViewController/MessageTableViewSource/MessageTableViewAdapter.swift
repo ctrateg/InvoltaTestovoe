@@ -43,8 +43,9 @@ final class MessageTableViewAdapter {
         configureActions()
     }
 
-    func updateMessage(with message: [String]?) {
-        tableViewDataSource.messages = message
+    func updateMessage(with messages: [String]?, iconsUrl: [String]?) {
+        tableViewDataSource.messages = messages
+        tableViewDataSource.iconsUrl = iconsUrl
     }
 
     func addMessage(text: String) {

@@ -11,7 +11,7 @@ protocol MessageViewDelegate {
     /// Method for setup initial state of view
     func setupInitialState()
     /// Method for update screen with data
-    func updateScreen(messages: [String]?)
+    func updateScreen(messages: [String]?, iconsUrl: [String]?)
     /// Setup loading state
     func loadingState(_ isLoading: Bool)
     /// Setup error state
@@ -94,10 +94,10 @@ extension MessageViewController: MessageViewDelegate {
         hideKeyboardWhenTappedAround()
     }
     
-    func updateScreen(messages: [String]?) {
+    func updateScreen(messages: [String]?, iconsUrl: [String]?) {
         adapter.clearTable()
         if let messages = messages {
-            adapter.updateMessage(with: messages)
+            adapter.updateMessage(with: messages, iconsUrl: iconsUrl)
             tableView.reloadData()
         }
     }
@@ -128,7 +128,7 @@ private extension MessageViewController {
             self?.presenter?.deleteMessage(at: index)
         }
         adapter.didLoadMore = { [weak self] offset in
-            self?.presenter?.updateData(offset: String(offset))
+            self?.presenter?.updateData(offSet: String(offset))
         }
         adapter.didSelectItem = { [weak self] model in
             let viewController = DescriptionViewController()
