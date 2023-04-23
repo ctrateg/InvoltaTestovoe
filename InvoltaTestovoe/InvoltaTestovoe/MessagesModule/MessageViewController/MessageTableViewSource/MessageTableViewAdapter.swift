@@ -19,7 +19,8 @@ final class MessageTableViewAdapter {
 
     // MARK: - Properties
 
-    var didSelectItem: ((DescriptionModel) -> ())?
+    var didSelectItem: ModelBlock<DescriptionModel>?
+    var didLoadMore: IntBlock?
 
     // MARK: - Private Properties
 
@@ -46,6 +47,7 @@ final class MessageTableViewAdapter {
         tableView.transform = CGAffineTransform.init(rotationAngle: (-(CGFloat)(Double.pi)))
         
         tableViewDelegate.didSelectItem = didSelectItem
+        tableViewDelegate.didLoadMore = didLoadMore
     }
 
     func updateMessage(with message: [String]?) {
@@ -59,11 +61,5 @@ final class MessageTableViewAdapter {
     func clearTable() {
         tableViewDataSource.clearData()
     }
-
-}
-
-// MARK: - Private Methods
-
-private extension MessageTableViewAdapter {
 
 }

@@ -72,6 +72,5 @@ final class MessageTableViewDataSource: NSObject, MessageDataSource {
 
         return cell
     }
-    
 
 }

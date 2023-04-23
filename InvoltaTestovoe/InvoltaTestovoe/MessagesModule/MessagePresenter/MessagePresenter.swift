@@ -6,12 +6,15 @@
 //
 
 import Foundation
+import CoreData
 
 protocol MessagePresenterDelegate {
     /// Notify presenter that view is ready
     func viewDidLoad()
+    /// Setup data
+    func setupData()
     /// Update data
-    func update(offset: String)
+    func updateData(offset: String)
     /// Add message for storage
     func addNewMessage(message: String)
     /// Delete message from storage
@@ -34,7 +37,7 @@ final class MessagePresenter {
     // MARK: - Private Properties
 
     private let messageService: MessagesServiceDelegate
-    private var localMessages: [String] = []
+    private var localMessagesModel: [MessageStorageModel] = []
     private var messages: [String] = []
 
     // MARK: - Initialization
@@ -51,14 +54,27 @@ extension MessagePresenter: MessagePresenterDelegate {
 
     func viewDidLoad() {
         view?.setupInitialState()
-        update(offset: Constants.defaultOffset)
+        setupData()
     }
 
-    func update(offset: String) {
-        self.localMessages = StorageService.shared.load(key: .messages)
+    func setupData() {
+        view?.loadingState(true)
+        self.messageService.getMessages(offSet: Constants.defaultOffset) { model in
+            DispatchQueue.main.async { [weak self] in
+                let localMessagesModel = StorageService.shared.load()
+                let localMessages = localMessagesModel.map { $0.message }.compactMap{ $0 }
+                self?.localMessagesModel = localMessagesModel
+                self?.messages = localMessages + (model.result ?? [])
+                self?.view?.updateScreen(messages: localMessages + (model.result ?? []))
+                self?.view?.loadingState(false)
+            }
+        }
+    }
+
+    func updateData(offset: String) {
         self.messageService.getMessages(offSet: offset) { model in
             DispatchQueue.main.async { [weak self] in
-                self?.messages = (self?.localMessages ?? []) + (model.result ?? [])
+                self?.messages += (model.result ?? [])
                 self?.view?.updateScreen(messages: self?.messages)
             }
         }
@@ -66,13 +82,14 @@ extension MessagePresenter: MessagePresenterDelegate {
 
     func addNewMessage(message: String) {
         messages.insert(message, at: 0)
-        StorageService.shared.save(value: localMessages, key: .messages)
+        StorageService.shared.save(value: message)
+        localMessagesModel = StorageService.shared.load()
     }
 
     func deleteMessage(at index: Int) {
-        if index < localMessages.count {
-            StorageService.shared.delete(for: .messages, at: index)
-            localMessages = StorageService.shared.load(key: .messages)
+        if index < localMessagesModel.count {
+            StorageService.shared.remove(model: localMessagesModel[index])
+            localMessagesModel = StorageService.shared.load()
         }
 
         messages.remove(at: index)

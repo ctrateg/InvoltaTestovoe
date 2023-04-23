@@ -54,16 +54,6 @@ final class MessageTableViewCell: UITableViewCell {
         transform = CGAffineTransform(rotationAngle: CGFloat.pi)
     }
 
-//    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-//        super.preferredLayoutAttributesFitting(layoutAttributes)
-//        textLabel.preferredMaxLayoutWidth = layoutAttributes.size.width - contentView.layoutMargins.left - contentView.layoutMargins.left
-//        layoutAttributes.bounds.size.height = systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
-//
-//        transform = CGAffineTransform(rotationAngle: CGFloat.pi)
-//
-//        return layoutAttributes
-//    }
-
     override func prepareForReuse() {
         super.prepareForReuse()
         messageLabel.text = ""

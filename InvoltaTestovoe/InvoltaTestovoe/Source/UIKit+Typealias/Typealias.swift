@@ -7,4 +7,6 @@
 
 import Foundation
 
-typealias IntBlock = ((Int) -> ())?
+typealias IntBlock = ((Int) -> ())
+typealias ModelBlock<T> = ((T) -> ())
+typealias EmptyBLock = (() -> ())

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MessagesModel: Codable {
+struct MessagesRequestModel: Codable {
 
     // MARK: - Properties
 

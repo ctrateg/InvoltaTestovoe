@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1BF3886629F4D94800C57DFF /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF3886529F4D94800C57DFF /* Typealias.swift */; };
+		1BF3886C29F4F8B200C57DFF /* MessageStorageModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1BF3886A29F4F8B200C57DFF /* MessageStorageModel.xcdatamodeld */; };
 		1BFF52CD29F09AB300B3611B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF52CC29F09AB300B3611B /* AppDelegate.swift */; };
 		1BFF52D629F09AB400B3611B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BFF52D529F09AB400B3611B /* Assets.xcassets */; };
 		1BFF52D929F09AB400B3611B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BFF52D729F09AB400B3611B /* LaunchScreen.storyboard */; };
@@ -19,7 +20,7 @@
 		1BFF530F29F09F4500B3611B /* MessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF530E29F09F4500B3611B /* MessagesService.swift */; };
 		1BFF531329F09F8200B3611B /* MessageModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF531229F09F8200B3611B /* MessageModuleBuilder.swift */; };
 		1BFF531929F0A0EB00B3611B /* MessagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF531829F0A0EB00B3611B /* MessagePresenter.swift */; };
-		1BFF531B29F0A33F00B3611B /* MessagesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF531A29F0A33F00B3611B /* MessagesModel.swift */; };
+		1BFF531B29F0A33F00B3611B /* MessagesRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF531A29F0A33F00B3611B /* MessagesRequestModel.swift */; };
 		1BFF532329F188EC00B3611B /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF532229F188EC00B3611B /* UITextField.swift */; };
 		1BFF532529F1A0A200B3611B /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF532429F1A0A200B3611B /* UIViewController.swift */; };
 		1BFF532729F1AE8F00B3611B /* MessageTableViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF532629F1AE8F00B3611B /* MessageTableViewAdapter.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		1BF3886529F4D94800C57DFF /* Typealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
+		1BF3886B29F4F8B200C57DFF /* MessageStorageModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MessageStorageModel.xcdatamodel; sourceTree = "<group>"; };
 		1BFF52C929F09AB300B3611B /* InvoltaTestovoe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InvoltaTestovoe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BFF52CC29F09AB300B3611B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1BFF52D529F09AB400B3611B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -46,7 +48,7 @@
 		1BFF530E29F09F4500B3611B /* MessagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesService.swift; sourceTree = "<group>"; };
 		1BFF531229F09F8200B3611B /* MessageModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModuleBuilder.swift; sourceTree = "<group>"; };
 		1BFF531829F0A0EB00B3611B /* MessagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePresenter.swift; sourceTree = "<group>"; };
-		1BFF531A29F0A33F00B3611B /* MessagesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesModel.swift; sourceTree = "<group>"; };
+		1BFF531A29F0A33F00B3611B /* MessagesRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesRequestModel.swift; sourceTree = "<group>"; };
 		1BFF532229F188EC00B3611B /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		1BFF532429F1A0A200B3611B /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		1BFF532629F1AE8F00B3611B /* MessageTableViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewAdapter.swift; sourceTree = "<group>"; };
@@ -88,7 +90,6 @@
 		1BFF52CB29F09AB300B3611B /* InvoltaTestovoe */ = {
 			isa = PBXGroup;
 			children = (
-				1BFF533029F1EF6000B3611B /* DescriptionView */,
 				1BFF531029F09F5A00B3611B /* MessagesModule */,
 				1BFF530B29F09F2A00B3611B /* Services */,
 				1BFF530229F09CAF00B3611B /* Source */,
@@ -100,8 +101,8 @@
 		1BFF530229F09CAF00B3611B /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				1BF3886529F4D94800C57DFF /* Typealias.swift */,
-				1BFF532129F188DD00B3611B /* Extensions+Reusable */,
+				1BF3886A29F4F8B200C57DFF /* MessageStorageModel.xcdatamodeld */,
+				1BFF532129F188DD00B3611B /* UIKit+Typealias */,
 				1BFF52CC29F09AB300B3611B /* AppDelegate.swift */,
 				1BFF52D529F09AB400B3611B /* Assets.xcassets */,
 				1BFF52D729F09AB400B3611B /* LaunchScreen.storyboard */,
@@ -113,21 +114,22 @@
 			isa = PBXGroup;
 			children = (
 				1BFF531C29F148F100B3611B /* MessageTableCell */,
-				1BFF530429F09DF300B3611B /* MessageCollectionViewSource */,
+				1BFF530429F09DF300B3611B /* MessageTableViewSource */,
+				1BFF533029F1EF6000B3611B /* DescriptionView */,
 				1BFF52FE29F09BFD00B3611B /* MessageViewController.swift */,
 				1BFF52FF29F09BFD00B3611B /* MessageViewController.xib */,
 			);
 			path = MessageViewController;
 			sourceTree = "<group>";
 		};
-		1BFF530429F09DF300B3611B /* MessageCollectionViewSource */ = {
+		1BFF530429F09DF300B3611B /* MessageTableViewSource */ = {
 			isa = PBXGroup;
 			children = (
 				1BFF530529F09E1400B3611B /* MessageTableViewDataSource.swift */,
 				1BFF530729F09E2000B3611B /* MessageTableViewDelegate.swift */,
 				1BFF532629F1AE8F00B3611B /* MessageTableViewAdapter.swift */,
 			);
-			path = MessageCollectionViewSource;
+			path = MessageTableViewSource;
 			sourceTree = "<group>";
 		};
 		1BFF530B29F09F2A00B3611B /* Services */ = {
@@ -135,7 +137,7 @@
 			children = (
 				1BFF530C29F09F3900B3611B /* MessagesRequest.swift */,
 				1BFF530E29F09F4500B3611B /* MessagesService.swift */,
-				1BFF531A29F0A33F00B3611B /* MessagesModel.swift */,
+				1BFF531A29F0A33F00B3611B /* MessagesRequestModel.swift */,
 				1BFF533529F2D3F700B3611B /* StorageService.swift */,
 			);
 			path = Services;
@@ -176,14 +178,15 @@
 			path = MessageTableCell;
 			sourceTree = "<group>";
 		};
-		1BFF532129F188DD00B3611B /* Extensions+Reusable */ = {
+		1BFF532129F188DD00B3611B /* UIKit+Typealias */ = {
 			isa = PBXGroup;
 			children = (
+				1BF3886529F4D94800C57DFF /* Typealias.swift */,
 				1BFF532229F188EC00B3611B /* UITextField.swift */,
 				1BFF532429F1A0A200B3611B /* UIViewController.swift */,
 				1BFF532E29F1EE3500B3611B /* PaddingLabel.swift */,
 			);
-			path = "Extensions+Reusable";
+			path = "UIKit+Typealias";
 			sourceTree = "<group>";
 		};
 		1BFF533029F1EF6000B3611B /* DescriptionView */ = {
@@ -272,10 +275,11 @@
 				1BFF530829F09E2000B3611B /* MessageTableViewDelegate.swift in Sources */,
 				1BFF531929F0A0EB00B3611B /* MessagePresenter.swift in Sources */,
 				1BFF531329F09F8200B3611B /* MessageModuleBuilder.swift in Sources */,
-				1BFF531B29F0A33F00B3611B /* MessagesModel.swift in Sources */,
+				1BFF531B29F0A33F00B3611B /* MessagesRequestModel.swift in Sources */,
 				1BFF533629F2D3F700B3611B /* StorageService.swift in Sources */,
 				1BFF532329F188EC00B3611B /* UITextField.swift in Sources */,
 				1BFF532F29F1EE3500B3611B /* PaddingLabel.swift in Sources */,
+				1BF3886C29F4F8B200C57DFF /* MessageStorageModel.xcdatamodeld in Sources */,
 				1BFF530029F09BFD00B3611B /* MessageViewController.swift in Sources */,
 				1BFF532C29F1E91100B3611B /* MessageTableViewCell.swift in Sources */,
 				1BFF532529F1A0A200B3611B /* UIViewController.swift in Sources */,
@@ -492,6 +496,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1BF3886A29F4F8B200C57DFF /* MessageStorageModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1BF3886B29F4F8B200C57DFF /* MessageStorageModel.xcdatamodel */,
+			);
+			currentVersion = 1BF3886B29F4F8B200C57DFF /* MessageStorageModel.xcdatamodel */;
+			name = MessageStorageModel.xcdatamodeld;
+			path = ../MessageStorageModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1BFF52C129F09AB300B3611B /* Project object */;
 }

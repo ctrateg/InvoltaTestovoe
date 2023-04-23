@@ -12,6 +12,8 @@ protocol MessageViewDelegate {
     func setupInitialState()
     /// Method for update screen with data
     func updateScreen(messages: [String]?)
+    /// Setup loading state
+    func loadingState(_ isLoading: Bool)
 }
 
 final class MessageViewController: UIViewController {
@@ -91,15 +93,19 @@ extension MessageViewController: MessageViewDelegate {
     }
     
     func updateScreen(messages: [String]?) {
-        loadingState(true)
         adapter.clearTable()
         if let messages = messages {
             adapter.updateMessage(with: messages)
             tableView.reloadData()
-            loadingState(false)
         }
     }
-    
+
+    func loadingState(_ isLoading: Bool) {
+        isLoading ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
+        activityIndicator.isHidden = !isLoading
+        messageField.isEnabled = !isLoading
+    }
+
 }
 
 // MARK: - Private Methods
@@ -110,13 +116,15 @@ private extension MessageViewController {
         let deleteCompletion: IntBlock = { [weak self] index in
             self?.presenter?.deleteMessage(at: index)
         }
+        adapter.didLoadMore = { [weak self] offset in
+            self?.presenter?.updateData(offset: String(offset))
+        }
         adapter.didSelectItem = { [weak self] model in
-            guard let self = self else { return }
             let viewController = DescriptionViewController()
             viewController.modalPresentationStyle = .fullScreen
             viewController.model = model
             viewController.didDeletetMessage = deleteCompletion
-            self.navigationController?.pushViewController(viewController, animated: true)
+            self?.navigationController?.pushViewController(viewController, animated: true)
         }
         adapter.configure()
     }
@@ -136,12 +144,6 @@ private extension MessageViewController {
         messageField.backgroundColor = .white
         messageField.setLeftPaddingPoints(Constants.textInFieldPadding)
         messageField.setRightPaddingPoints(Constants.textInFieldPadding)
-    }
-
-    func loadingState(_ isLoading: Bool) {
-        isLoading ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
-        activityIndicator.isHidden = !isLoading
-        messageField.isEnabled = !isLoading
     }
 
     func addObservers() {

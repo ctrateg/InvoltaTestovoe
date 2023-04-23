@@ -5,19 +5,33 @@
 //  Created by Евгений Васильев on 21.04.2023.
 //
 
-import Foundation
+import CoreData
 
 final class StorageService {
+
+    // MARK: - Constants
+    
+    private enum Constants {
+        static let messageModelName = "MessageStorageModel"
+    }
 
     // MARK: - Properties
 
     static let shared = StorageService()
 
-    // MARK: - Keys
+    // MARK: - Private Properties
 
-    enum Keys: String {
-        case messages = "LocalMessages"
-    }
+    private lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: Constants.messageModelName)
+        container.loadPersistentStores { _, error in
+            if let error = error as NSError? {
+                print("Unresolved error \(error), \(error.userInfo)")
+            }
+        }
+        return container
+    }()
+
+    private lazy var managedContext = self.persistentContainer.viewContext
 
     // MARK: - Initialization
 
@@ -25,19 +39,48 @@ final class StorageService {
 
     // MARK: - Methods
 
-    func save<T: Sequence>(value: [T], key: Keys) {
-        UserDefaults().set(value, forKey: key.rawValue)
+    func save(value: String) {
+        let entity = MessageStorageModel(context: persistentContainer.viewContext)
+        entity.message = value
+        do {
+            try persistentContainer.viewContext.save()
+        } catch let error as NSError {
+            print("Ошибка при сохранении: \(error), \(error.userInfo)")
+        }
+//        UserDefaults().set(values, forKey: key.rawValue)
     }
 
-    func load(key: Keys) -> [String] {
-        return UserDefaults.standard.array(forKey: key.rawValue) as? [String] ?? []
+    func load() -> [MessageStorageModel] {
+        let request = NSFetchRequest<MessageStorageModel>(entityName: Constants.messageModelName)
+
+        do {
+            return try persistentContainer.viewContext.fetch(request)
+        } catch let error as NSError {
+          print("Ошибка при загрузке данных: \(error), \(error.userInfo)")
+            return []
+        }
     }
 
-    func delete(for key: Keys,at index: Int) {
-        var items = load(key: key)
-        items.remove(at: index)
-        UserDefaults().removeObject(forKey: key.rawValue)
-        UserDefaults().set(items, forKey: key.rawValue)
+    func remove(model: MessageStorageModel) {
+        do {
+            persistentContainer.viewContext.delete(model)
+            try persistentContainer.viewContext.save()
+        } catch let error as NSError {
+            print("Ошибка при удалении: \(error), \(error.userInfo)")
+        }
+    }
+
+    func saveContext() {
+      let context = persistentContainer.viewContext
+      if context.hasChanges {
+        do {
+          try context.save()
+        } catch {
+          context.rollback()
+          let nserror = error as NSError
+          fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+      }
     }
 
 }

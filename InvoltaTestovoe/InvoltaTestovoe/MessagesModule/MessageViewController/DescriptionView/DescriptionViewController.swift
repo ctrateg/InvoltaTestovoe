@@ -33,7 +33,7 @@ final class DescriptionViewController: UIViewController {
     // MARK: - Properties
     
     var model: DescriptionModel?
-    var didDeletetMessage: ((Int) -> ())?
+    var didDeletetMessage: IntBlock?
 
     // MARK: - Lifecycle
     
