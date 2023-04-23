@@ -7,21 +7,23 @@
 
 import UIKit
 
-protocol CollectionViewSelectableItemDelegate: UITableViewDelegate {
-    var didSelectItem: ((String) -> Void)? { get set }
+protocol MessageViewSelectableDelegate: UITableViewDelegate {
+    var didSelectItem: ((DescriptionModel) -> ())? { get set }
 }
 
-final class MessageTableViewDelegate: NSObject, CollectionViewSelectableItemDelegate {
+final class MessageTableViewDelegate: NSObject, MessageViewSelectableDelegate {
 
     // MARK: - Properties
 
-    var didSelectItem: ((String) -> Void)?
+    var didSelectItem: ((DescriptionModel) -> ())?
+    var messages: [String]?
     
     // MARK: - CollectionViewSelectableItemDelegate
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as? MessageTableViewCell
-        didSelectItem?(cell?.message ?? "")
+        let model = DescriptionModel(index: indexPath.row, message: cell?.message)
+        didSelectItem?(model)
     }
     
 }

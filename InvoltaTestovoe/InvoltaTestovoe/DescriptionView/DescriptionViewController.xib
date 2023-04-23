@@ -10,10 +10,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DescriptionViewController" customModule="InvoltaTestovoe" customModuleProvider="target">
             <connections>
-                <outlet property="date" destination="oE7-v0-QGU" id="CQ6-08-NBF"/>
+                <outlet property="dateLabel" destination="oE7-v0-QGU" id="CQ6-08-NBF"/>
                 <outlet property="deleteButton" destination="dec-33-ePS" id="y41-4k-sgY"/>
                 <outlet property="icon" destination="bCz-VS-bmJ" id="7jK-6s-zML"/>
-                <outlet property="message" destination="qBX-G9-xW2" id="axe-7d-Cg7"/>
+                <outlet property="messageLabel" destination="qBX-G9-xW2" id="axe-7d-Cg7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

@@ -7,7 +7,13 @@
 
 import UIKit
 
-final class MessageTableViewDataSource: NSObject, UITableViewDataSource {
+protocol MessageDataSource: UITableViewDataSource {
+    var messages: [String]? { get set }
+    func addMessage(text: String)
+    func clearData()
+}
+
+final class MessageTableViewDataSource: NSObject, MessageDataSource {
 
     // MARK: - Constants
     
@@ -42,6 +48,10 @@ final class MessageTableViewDataSource: NSObject, UITableViewDataSource {
     func addMessage(text: String) {
         workingMessages = [text] + workingMessages
         tableView?.reloadData()
+    }
+
+    func clearData() {
+        workingMessages = []
     }
 
     // MARK: - UITableViewDataSource

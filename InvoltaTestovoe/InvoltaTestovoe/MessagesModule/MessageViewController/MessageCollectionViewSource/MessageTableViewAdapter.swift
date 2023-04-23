@@ -19,18 +19,20 @@ final class MessageTableViewAdapter {
 
     // MARK: - Properties
 
-    var didSelectItem: ((String) -> Void)?
+    var didSelectItem: ((DescriptionModel) -> ())?
 
     // MARK: - Private Properties
 
     private var tableView: UITableView
-    private lazy var tableViewDataSource = MessageTableViewDataSource(tableView: tableView)
-    private lazy var tableViewDelegate = MessageTableViewDelegate()
+    private let tableViewDataSource: MessageDataSource
+    private let tableViewDelegate: MessageViewSelectableDelegate
 
     // MARK: - Initialization
 
     init(tableView: UITableView) {
         self.tableView = tableView
+        self.tableViewDataSource = MessageTableViewDataSource(tableView: tableView)
+        self.tableViewDelegate = MessageTableViewDelegate()
     }
 
     // MARK: - Methods
@@ -52,6 +54,10 @@ final class MessageTableViewAdapter {
 
     func addMessage(text: String) {
         tableViewDataSource.addMessage(text: text)
+    }
+
+    func clearTable() {
+        tableViewDataSource.clearData()
     }
 
 }

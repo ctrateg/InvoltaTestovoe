@@ -21,6 +21,7 @@ final class MessageViewController: UIViewController {
     private enum Constants {
         static let titleText = "Тестовое задание"
         static let placeholderText = "Сообщение"
+        static let notificationReload = "ReloadData"
         static let titleFont: CGFloat = 18
         static let textInFieldPadding: CGFloat = 20
         static let textFieldKeyboardOffset: CGFloat = 35
@@ -69,6 +70,7 @@ extension MessageViewController: UITextFieldDelegate {
             !text.isEmpty
         {
             adapter.addMessage(text: text)
+            presenter?.addNewMessage(message: text)
             tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
         }
         textField.text = ""
@@ -90,10 +92,11 @@ extension MessageViewController: MessageViewDelegate {
     
     func updateScreen(messages: [String]?) {
         loadingState(true)
+        adapter.clearTable()
         if let messages = messages {
             adapter.updateMessage(with: messages)
-            loadingState(false)
             tableView.reloadData()
+            loadingState(false)
         }
     }
     
@@ -104,11 +107,16 @@ extension MessageViewController: MessageViewDelegate {
 private extension MessageViewController {
 
     func configureTableView() {
-        adapter.didSelectItem = { [weak self] message in
+        let deleteCompletion: IntBlock = { [weak self] index in
+            self?.presenter?.deleteMessage(at: index)
+        }
+        adapter.didSelectItem = { [weak self] model in
+            guard let self = self else { return }
             let viewController = DescriptionViewController()
             viewController.modalPresentationStyle = .fullScreen
-            viewController.titleMessage = message
-            self?.navigationController?.pushViewController(viewController, animated: true)
+            viewController.model = model
+            viewController.didDeletetMessage = deleteCompletion
+            self.navigationController?.pushViewController(viewController, animated: true)
         }
         adapter.configure()
     }
@@ -147,7 +155,7 @@ private extension MessageViewController {
 
 @objc
 private extension MessageViewController {
-    
+
     func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if self.textFieldButtonSpace.constant == .zero {
