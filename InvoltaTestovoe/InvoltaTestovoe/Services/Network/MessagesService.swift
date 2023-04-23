@@ -8,7 +8,7 @@
 import Foundation
 
 protocol MessagesServiceDelegate {
-    func getMessages(offSet: String, completion: @escaping (MessagesRequestModel) -> Void)
+    func getMessages(offSet: String, completion: @escaping RequestBlock<String>)
 }
 
 final class MessagesService: MessagesServiceDelegate {
@@ -17,7 +17,7 @@ final class MessagesService: MessagesServiceDelegate {
 
     // MARK: - Methods
 
-    func getMessages(offSet: String, completion: @escaping (MessagesRequestModel) -> Void) {
+    func getMessages(offSet: String, completion: @escaping RequestBlock<String>) {
         MessageRequest().getMessages(offSet: offSet, completion: completion)
     }
 

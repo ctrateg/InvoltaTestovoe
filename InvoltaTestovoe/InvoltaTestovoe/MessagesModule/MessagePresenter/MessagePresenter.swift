@@ -59,23 +59,29 @@ extension MessagePresenter: MessagePresenterDelegate {
 
     func setupData() {
         view?.loadingState(true)
-        self.messageService.getMessages(offSet: Constants.defaultOffset) { model in
-            DispatchQueue.main.async { [weak self] in
+        self.messageService.getMessages(offSet: Constants.defaultOffset) { [weak self] response in
+            switch response {
+            case .success(let result):
                 let localMessagesModel = StorageService.shared.load()
                 let localMessages = localMessagesModel.map { $0.message }.compactMap{ $0 }
                 self?.localMessagesModel = localMessagesModel
-                self?.messages = localMessages + (model.result ?? [])
-                self?.view?.updateScreen(messages: localMessages + (model.result ?? []))
+                self?.messages = localMessages + (result )
+                self?.view?.updateScreen(messages: localMessages + result)
                 self?.view?.loadingState(false)
+            case .failure(_):
+                self?.view?.openErrorScreen()
             }
         }
     }
 
     func updateData(offset: String) {
-        self.messageService.getMessages(offSet: offset) { model in
-            DispatchQueue.main.async { [weak self] in
-                self?.messages += (model.result ?? [])
+        self.messageService.getMessages(offSet: offset) { [weak self] response in
+            switch response {
+            case .success(let result):
+                self?.messages += result
                 self?.view?.updateScreen(messages: self?.messages)
+            case .failure(let error):
+                print(error)
             }
         }
     }

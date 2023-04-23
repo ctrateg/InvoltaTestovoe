@@ -9,21 +9,15 @@ import UIKit
 
 @IBDesignable
 class PaddingLabel: UILabel {
+
+    // MARK: - Properties
+
     var textEdgeInsets = UIEdgeInsets.zero {
         didSet { invalidateIntrinsicContentSize() }
     }
-    
-    open override func textRect(forBounds bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {
-        let insetRect = bounds.inset(by: textEdgeInsets)
-        let textRect = super.textRect(forBounds: insetRect, limitedToNumberOfLines: numberOfLines)
-        let invertedInsets = UIEdgeInsets(top: -textEdgeInsets.top, left: -textEdgeInsets.left, bottom: -textEdgeInsets.bottom, right: -textEdgeInsets.right)
-        return textRect.inset(by: invertedInsets)
-    }
-    
-    override func drawText(in rect: CGRect) {
-        super.drawText(in: rect.inset(by: textEdgeInsets))
-    }
-    
+
+    // MARK: - IBInspectables
+
     @IBInspectable
     var paddingLeft: CGFloat {
         set { textEdgeInsets.left = newValue }
@@ -47,4 +41,19 @@ class PaddingLabel: UILabel {
         set { textEdgeInsets.bottom = newValue }
         get { return textEdgeInsets.bottom }
     }
+
+    // MARK: - Methods
+
+    override func textRect(forBounds bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {
+        let insetRect = bounds.inset(by: textEdgeInsets)
+        let textRect = super.textRect(forBounds: insetRect, limitedToNumberOfLines: numberOfLines)
+        let invertedInsets = UIEdgeInsets(top: -textEdgeInsets.top, left: -textEdgeInsets.left, bottom: -textEdgeInsets.bottom, right: -textEdgeInsets.right)
+        return textRect.inset(by: invertedInsets)
+    }
+    
+    override func drawText(in rect: CGRect) {
+        super.drawText(in: rect.inset(by: textEdgeInsets))
+    }
+    
+
 }

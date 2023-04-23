@@ -13,14 +13,17 @@ final class MessageTableViewCell: UITableViewCell {
     
     private enum Constants {
         static let cornerRadius: CGFloat = 10
+        static let padding: CGFloat = 8
     }
 
     // MARK: - Properties
 
     private(set) var message: String?
+    private(set) var image: UIImage?
 
     // MARK: - IBOutlets
 
+    @IBOutlet private weak var iconView: UIImageView!
     @IBOutlet private weak var opaqueView: UIView!
     @IBOutlet private weak var messageLabel: PaddingLabel!
 
@@ -70,8 +73,10 @@ extension MessageTableViewCell {
         messageLabel.textAlignment = .right
         messageLabel.textColor = .white
         messageLabel.backgroundColor = .none
-        messageLabel.paddingLeft = 8
-        messageLabel.paddingRight = 8
+        messageLabel.paddingLeft = Constants.padding
+        messageLabel.paddingRight = Constants.padding
+
+        iconView.layer.cornerRadius = iconView.frame.size.width/2
 
         opaqueView.backgroundColor = .lightGray
         opaqueView.layer.cornerRadius = Constants.cornerRadius

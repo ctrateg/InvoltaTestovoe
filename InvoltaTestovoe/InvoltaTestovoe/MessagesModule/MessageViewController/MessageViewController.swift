@@ -14,6 +14,8 @@ protocol MessageViewDelegate {
     func updateScreen(messages: [String]?)
     /// Setup loading state
     func loadingState(_ isLoading: Bool)
+    /// Setup error state
+    func openErrorScreen()
 }
 
 final class MessageViewController: UIViewController {
@@ -106,6 +108,15 @@ extension MessageViewController: MessageViewDelegate {
         messageField.isEnabled = !isLoading
     }
 
+    func openErrorScreen() {
+        let viewController = ErrorViewController()
+        viewController.modalPresentationStyle = .fullScreen
+        viewController.didTappedRetry = { [weak self] in
+            self?.presenter?.setupData()
+        }
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+
 }
 
 // MARK: - Private Methods
@@ -142,6 +153,7 @@ private extension MessageViewController {
         messageField.keyboardType = .default
         messageField.borderStyle = .none
         messageField.backgroundColor = .white
+        messageField.returnKeyType = .send
         messageField.setLeftPaddingPoints(Constants.textInFieldPadding)
         messageField.setRightPaddingPoints(Constants.textInFieldPadding)
     }

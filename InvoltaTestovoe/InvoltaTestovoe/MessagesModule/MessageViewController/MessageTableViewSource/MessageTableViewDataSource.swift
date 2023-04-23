@@ -9,6 +9,7 @@ import UIKit
 
 protocol MessageDataSource: UITableViewDataSource {
     var messages: [String]? { get set }
+    var didReloadTable: EmptyBlock? { get set }
     func addMessage(text: String)
     func clearData()
 }
@@ -32,22 +33,17 @@ final class MessageTableViewDataSource: NSObject, MessageDataSource {
         }
     }
 
+    var didReloadTable: EmptyBlock?
+
     // MARK: - Private Properties
 
     private var workingMessages: [String] = []
-    private weak var tableView: UITableView?
-
-    // MARK: - Initialization
-
-    init(tableView: UITableView) {
-        self.tableView = tableView
-    }
 
     // MARK: - Methods
 
     func addMessage(text: String) {
         workingMessages = [text] + workingMessages
-        tableView?.reloadData()
+        didReloadTable?()
     }
 
     func clearData() {

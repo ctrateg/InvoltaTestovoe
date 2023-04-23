@@ -21,6 +21,8 @@ final class DescriptionViewController: UIViewController {
         static let backButtonTitle = "Назад"
         static let localMessagesName = "LocalMessages"
         static let notificationReload = "ReloadData"
+        static let messageFont: CGFloat = 22
+        static let dateFont: CGFloat = 12
     }
 
     // MARK: - IBOutlets
@@ -39,12 +41,7 @@ final class DescriptionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.isHidden = false
 
-        let backButton = UIBarButtonItem()
-        backButton.title = Constants.backButtonTitle
-        navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
-    
         setupInitialState()
     }
 
@@ -63,12 +60,17 @@ final class DescriptionViewController: UIViewController {
 private extension DescriptionViewController {
 
     func setupInitialState() {
+        navigationController?.navigationBar.isHidden = false
+
+        let backButton = UIBarButtonItem()
+        backButton.title = Constants.backButtonTitle
+    
         self.messageLabel.text = model?.message
         self.dateLabel.text = Date().formatted()
         self.deleteButton.setTitle(Constants.buttonName, for: .normal)
-        messageLabel.font = .systemFont(ofSize: 22, weight: .heavy)
-        messageLabel.numberOfLines = 0
-        dateLabel.font = .systemFont(ofSize: 12, weight: .light)
+        messageLabel.font = .systemFont(ofSize: Constants.messageFont, weight: .heavy)
+        messageLabel.numberOfLines = .zero
+        dateLabel.font = .systemFont(ofSize: Constants.dateFont, weight: .light)
     }
 
 }

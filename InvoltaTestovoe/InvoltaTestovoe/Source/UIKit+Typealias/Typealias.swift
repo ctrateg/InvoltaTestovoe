@@ -9,4 +9,5 @@ import Foundation
 
 typealias IntBlock = ((Int) -> ())
 typealias ModelBlock<T> = ((T) -> ())
-typealias EmptyBLock = (() -> ())
+typealias EmptyBlock = (() -> ())
+typealias RequestBlock<T> = ((Result<[T], Error>) -> Void)

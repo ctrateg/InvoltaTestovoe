@@ -32,22 +32,15 @@ final class MessageTableViewAdapter {
 
     init(tableView: UITableView) {
         self.tableView = tableView
-        self.tableViewDataSource = MessageTableViewDataSource(tableView: tableView)
+        self.tableViewDataSource = MessageTableViewDataSource()
         self.tableViewDelegate = MessageTableViewDelegate()
     }
 
     // MARK: - Methods
 
     func configure() {
-        tableView.register(UINib.init(nibName: Constants.cellName, bundle: nil), forCellReuseIdentifier: Constants.cellName)
-        tableView.backgroundColor = .systemMint
-        tableView.delegate = tableViewDelegate
-        tableView.dataSource = tableViewDataSource
-        tableView.separatorStyle = .none
-        tableView.transform = CGAffineTransform.init(rotationAngle: (-(CGFloat)(Double.pi)))
-        
-        tableViewDelegate.didSelectItem = didSelectItem
-        tableViewDelegate.didLoadMore = didLoadMore
+        configureTable()
+        configureActions()
     }
 
     func updateMessage(with message: [String]?) {
@@ -60,6 +53,30 @@ final class MessageTableViewAdapter {
 
     func clearTable() {
         tableViewDataSource.clearData()
+    }
+
+}
+
+// MARK: - Private Properties
+
+private extension MessageTableViewAdapter {
+
+    func configureTable() {
+        tableView.register(UINib.init(nibName: Constants.cellName, bundle: nil), forCellReuseIdentifier: Constants.cellName)
+        tableView.backgroundColor = .systemMint
+        tableView.delegate = tableViewDelegate
+        tableView.dataSource = tableViewDataSource
+        tableView.separatorStyle = .none
+        tableView.transform = CGAffineTransform.init(rotationAngle: (-(CGFloat)(Double.pi)))
+    }
+
+    func configureActions() {
+        tableViewDataSource.didReloadTable = { [weak self] in
+            self?.tableView.reloadData()
+        }
+
+        tableViewDelegate.didSelectItem = didSelectItem
+        tableViewDelegate.didLoadMore = didLoadMore
     }
 
 }
