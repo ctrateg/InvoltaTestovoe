@@ -27,7 +27,6 @@ final class MessageTableViewDelegate: NSObject, MessageViewSelectableDelegate {
 
     var didSelectItem: ModelBlock<DescriptionModel>?
     var didLoadMore: IntBlock?
-    var messages: [String]?
 
     // MARK: - Private Properties
 
@@ -37,8 +36,9 @@ final class MessageTableViewDelegate: NSObject, MessageViewSelectableDelegate {
     // MARK: - UITableViewDelegate
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as? MessageTableViewCell
-        let model = DescriptionModel(index: indexPath.row, message: cell?.message)
+        guard let cell = tableView.cellForRow(at: indexPath) as? MessageTableViewCell else { return }
+        let model = DescriptionModel(index: indexPath.row, message: cell.message, icon: cell.icon)
+
         didSelectItem?(model)
     }
 
@@ -46,12 +46,6 @@ final class MessageTableViewDelegate: NSObject, MessageViewSelectableDelegate {
         let lastSectionIndex = tableView.numberOfSections - 1
         let lastRowIndex = tableView.numberOfRows(inSection: lastSectionIndex) - 1
         if indexPath.section ==  lastSectionIndex && indexPath.row == lastRowIndex {
-            let spinner = UIActivityIndicatorView(style: .medium)
-            spinner.startAnimating()
-            spinner.frame = CGRect(x: .zero, y: .zero, width: tableView.bounds.width, height: Constants.spinnerHeight)
-
-            tableView.tableFooterView = spinner
-            tableView.tableFooterView?.isHidden = false
             offSetForMessageRequests += Constants.offSetForMessageRequests
             didLoadMore?(offSetForMessageRequests)
         }

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import CoreData
+import UIKit
 
 protocol MessagePresenterDelegate {
     /// Notify presenter that view is ready
@@ -29,6 +29,7 @@ final class MessagePresenter {
         static let defaultOffset = "0"
         static let baseCountMessages = 14
         static let offSetStep = 20
+        static let page = 1
     }
     
     // MARK: - Properties
@@ -38,11 +39,10 @@ final class MessagePresenter {
     // MARK: - Private Properties
 
     private let messageService: MessagesServiceDelegate
-    private let group = DispatchGroup()
-
+    private let group: DispatchGroup
     private var localMessagesModel: [MessageStorageModel] = []
     private var messages: [String] = []
-    private var iconsUrl: [String] = []
+    private var images: [UIImage] = []
     private var page = 0
     private var offSet = 20
 
@@ -50,6 +50,7 @@ final class MessagePresenter {
 
     init(messageService: MessagesServiceDelegate) {
         self.messageService = messageService
+        self.group = DispatchGroup()
     }
 
 }
@@ -66,44 +67,92 @@ extension MessagePresenter: MessagePresenterDelegate {
     func setupData() {
         view?.loadingState(true)
 
-        getIcons()
-
         group.enter()
-        messageService.getMessages(offSet: Constants.defaultOffset) { [weak self] response in
+        var iconsUrl: [String] = []
+        messageService.getIcon(page: Constants.page) { [weak self] response in
             switch response {
             case .success(let result):
-                guard let self = self else { return }
-                let localMessagesModel = StorageService.shared.load()
-                let localMessages = localMessagesModel.map { $0.message }.compactMap{ $0 }
-                let messages = localMessages + result
-                self.localMessagesModel = localMessagesModel
-                self.messages = messages
-                self.view?.updateScreen(messages: Array(messages.prefix(self.offSet)), iconsUrl: self.iconsUrl)
-                self.view?.loadingState(false)
+                self?.group.enter()
+                DispatchQueue.main.async {
+                    iconsUrl.append(contentsOf: result)
+                    self?.load(urls: iconsUrl.map { URL(string: $0) })
+                    self?.group.leave()
+                }
             case .failure(_):
-                self?.view?.openErrorScreen()
+                DispatchQueue.main.async { [weak self] in
+                    self?.view?.openErrorScreen()
+                }
             }
             self?.group.leave()
         }
 
+        group.enter()
+        messageService.getMessages(offSet: Constants.defaultOffset) { [weak self] response in
+            self?.group.enter()
+            switch response {
+            case .success(let result):
+                DispatchQueue.main.async {
+                    guard let self = self else { return }
+                    let localMessagesModel = StorageService.shared.load()
+                    let localMessages = localMessagesModel.map { $0.message }.compactMap{ $0 }
+                    self.localMessagesModel = localMessagesModel
+                    self.messages = localMessages + result
+                    self.group.leave()
+                }
+            case .failure(_):
+                DispatchQueue.main.async {
+                    self?.view?.loadingState(false)
+                    self?.view?.openErrorScreen()
+                    self?.group.leave()
+                }
+            }
+            self?.group.leave()
+        }
+
+        group.notify(queue: DispatchQueue.main) { [weak self] in
+            guard
+                let messages = self?.messages,
+                let offSet = self?.offSet,
+                let images = self?.images
+            else {
+                return
+            }
+
+            self?.view?.updateScreen(messages: Array(messages.prefix(offSet)), icons: images)
+            self?.view?.loadingState(false)
+        }
     }
 
     func updateData(offSet: String) {
-        page += 1
-        self.offSet += Constants.offSetStep
-        getIcons()
-
         group.enter()
+        self.offSet += Constants.offSetStep
         self.messageService.getMessages(offSet: offSet) { [weak self] response in
-            guard let self = self else { return }
+            self?.group.enter()
             switch response {
             case .success(let result):
-                self.messages += result
-                self.view?.updateScreen(messages: Array(self.messages.prefix(self.offSet)), iconsUrl: self.iconsUrl)
+                DispatchQueue.main.async {
+                    guard let self = self else { return }
+                    self.messages += result
+                    self.group.leave()
+                }
             case .failure(let error):
+                #warning("Обработка ошибки в виде снэка")
                 print(error)
+                self?.group.leave()
             }
-            self.group.leave()
+            self?.group.leave()
+        }
+
+        group.notify(queue: DispatchQueue.main) { [weak self] in
+            guard
+                let messages = self?.messages,
+                let offSet = self?.offSet,
+                let images = self?.images
+            else {
+                return
+            }
+
+            self?.view?.updateScreen(messages: Array(messages.prefix(offSet)), icons: images)
         }
     }
 
@@ -120,7 +169,6 @@ extension MessagePresenter: MessagePresenterDelegate {
         }
 
         messages.remove(at: index)
-        view?.updateScreen(messages: messages, iconsUrl: iconsUrl)
     }
     
 }
@@ -129,17 +177,24 @@ extension MessagePresenter: MessagePresenterDelegate {
 
 private extension MessagePresenter {
 
-    func getIcons() {
-        group.enter()
-        messageService.getIcon(page: page) { [weak self] response in
-            switch response {
-            case .success(let result):
-                self?.iconsUrl += result
-            case .failure(_):
-                self?.view?.openErrorScreen()
+    func load(urls: [URL?]) {
+        for url in urls {
+            group.enter()
+            DispatchQueue.global().async { [weak self] in
+                if
+                    let unwarperUrl = url,
+                        let data = try? Data(contentsOf: unwarperUrl)
+                {
+                    if let image = UIImage(data: data) {
+                        self?.group.enter()
+                        DispatchQueue.main.async {
+                            self?.images.append(image)
+                            self?.group.leave()
+                        }
+                    }
+                }
+                self?.group.leave()
             }
-            self?.group.leave()
         }
     }
-
 }

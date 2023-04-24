@@ -19,7 +19,7 @@ final class MessageTableViewCell: UITableViewCell {
     // MARK: - Properties
 
     private(set) var message: String?
-    private(set) var iconUrl: String?
+    private(set) var icon: UIImage?
 
     // MARK: - IBOutlets
 
@@ -51,15 +51,14 @@ final class MessageTableViewCell: UITableViewCell {
 
     // MARK: - Methods
 
-    func configure(message: String, iconUrl: String) {
+    func configure(message: String, icon: UIImage) {
         messageLabel.text = message
         self.message = message
-        configureIconView(iconUrl: iconUrl)
+        configureIconView(icon: icon)
         transform = CGAffineTransform(rotationAngle: CGFloat.pi)
     }
 
     override func prepareForReuse() {
-        super.prepareForReuse()
         messageLabel.text = ""
         iconView.image = nil
     }
@@ -73,21 +72,21 @@ extension MessageTableViewCell {
     func setupInitialState() {
         messageLabel.numberOfLines = .zero
         messageLabel.textAlignment = .right
-        messageLabel.textColor = .white
+        messageLabel.textColor = Colors.whiteColor
         messageLabel.backgroundColor = .none
         messageLabel.paddingLeft = Constants.padding
         messageLabel.paddingRight = Constants.padding
 
-        opaqueView.backgroundColor = .lightGray
+        opaqueView.backgroundColor = Colors.lightGrayColor
         opaqueView.layer.cornerRadius = Constants.cornerRadius
 
-        backgroundColor = .systemMint
+        backgroundColor = Colors.mintColor
     }
 
-    func configureIconView(iconUrl: String?) {
-        guard let stringUrl = iconUrl, let url = URL(string: stringUrl) else { return }
-        iconView.load(url: url)
-        iconView.layer.cornerRadius = iconView.frame.size.width/2
+    func configureIconView(icon: UIImage) {
+        iconView.image = icon
+        self.icon = icon
+        iconView.layer.cornerRadius = iconView.frame.height / 2
     }
 
 }

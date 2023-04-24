@@ -9,8 +9,7 @@ import UIKit
 
 protocol MessageDataSource: UITableViewDataSource {
     var messages: [String]? { get set }
-    var iconsUrl: [String]? { get set }
-    var didReloadTable: EmptyBlock? { get set }
+    var icons: [UIImage]? { get set }
     func addMessage(text: String)
     func clearData()
 }
@@ -26,14 +25,12 @@ final class MessageTableViewDataSource: NSObject, MessageDataSource {
     // MARK: - Properties
 
     var messages: [String]?
-    var iconsUrl: [String]?
-    var didReloadTable: EmptyBlock?
+    var icons: [UIImage]?
 
     // MARK: - Methods
 
     func addMessage(text: String) {
-        messages = [text] + (messages ?? [])
-        didReloadTable?()
+        messages?.insert(text, at: 0)
     }
 
     func clearData() {
@@ -54,9 +51,9 @@ final class MessageTableViewDataSource: NSObject, MessageDataSource {
         }
         if
             let messages = self.messages,
-            let iconsUrl = self.iconsUrl
+            let icons = self.icons
         {
-            cell.configure(message: messages[indexPath.row], iconUrl: iconsUrl[indexPath.row])
+            cell.configure(message: messages[indexPath.row], icon: icons[Int.random(in: 0...19)])
             cell.selectionStyle = .none
         }
 

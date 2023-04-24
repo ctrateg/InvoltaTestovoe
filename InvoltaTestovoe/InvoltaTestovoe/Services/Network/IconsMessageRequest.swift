@@ -37,13 +37,9 @@ final class IconsMessageRequest {
                     let returnData = try JSONDecoder().decode(RickAndMortyModel.self, from: data)
                     let stringsResult = returnData.results?.compactMap { $0.image }
             
-                    DispatchQueue.main.async {
-                        completion(.success(Array(stringsResult ?? [])))
-                    }
+                    completion(.success(Array(stringsResult ?? [])))
                 } catch let error {
-                    DispatchQueue.main.async {
-                        completion(.failure(error))
-                    }
+                    completion(.failure(error))
                 }
             }
         }.resume()

@@ -11,7 +11,7 @@ protocol MessageViewDelegate {
     /// Method for setup initial state of view
     func setupInitialState()
     /// Method for update screen with data
-    func updateScreen(messages: [String]?, iconsUrl: [String]?)
+    func updateScreen(messages: [String]?, icons: [UIImage]?)
     /// Setup loading state
     func loadingState(_ isLoading: Bool)
     /// Setup error state
@@ -29,6 +29,8 @@ final class MessageViewController: UIViewController {
         static let titleFont: CGFloat = 18
         static let textInFieldPadding: CGFloat = 20
         static let textFieldKeyboardOffset: CGFloat = 35
+        static let tableViewButtonSpace: CGFloat = 40
+        static let viewCornerRadius: CGFloat = 8
     }
 
     // MARK: - IBOutlets
@@ -46,7 +48,7 @@ final class MessageViewController: UIViewController {
 
     // MARK: - Private Properties
 
-    private lazy var adapter = MessageTableViewAdapter(tableView: tableView)
+    private lazy var adapter: MessageTableViewAdapterDelegate = MessageTableViewAdapter(tableView: tableView)
 
     // MARK: - Lifecycle
 
@@ -58,7 +60,7 @@ final class MessageViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = true
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
 }
@@ -73,9 +75,9 @@ extension MessageViewController: UITextFieldDelegate {
             let text = textField.text,
             !text.isEmpty
         {
-            adapter.addMessage(text: text)
             presenter?.addNewMessage(message: text)
-            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+            adapter.addMessage(text: text)
+            tableView.scrollToRow(at: IndexPath(row: .zero, section: .zero), at: .top, animated: true)
         }
         textField.text = ""
         return true
@@ -88,17 +90,17 @@ extension MessageViewController: UITextFieldDelegate {
 extension MessageViewController: MessageViewDelegate {
 
     func setupInitialState() {
+        view.backgroundColor = Colors.mintColor
         configureTableView()
         configureTitle()
         configureTextField()
         hideKeyboardWhenTappedAround()
     }
     
-    func updateScreen(messages: [String]?, iconsUrl: [String]?) {
+    func updateScreen(messages: [String]?, icons: [UIImage]?) {
         adapter.clearTable()
         if let messages = messages {
-            adapter.updateMessage(with: messages, iconsUrl: iconsUrl)
-            tableView.reloadData()
+            adapter.updateMessage(with: messages, icons: icons)
         }
     }
 
@@ -110,7 +112,6 @@ extension MessageViewController: MessageViewDelegate {
 
     func openErrorScreen() {
         let viewController = ErrorViewController()
-        viewController.modalPresentationStyle = .fullScreen
         viewController.didTappedRetry = { [weak self] in
             self?.presenter?.setupData()
         }
@@ -125,6 +126,7 @@ private extension MessageViewController {
 
     func configureTableView() {
         let deleteCompletion: IntBlock = { [weak self] index in
+            self?.adapter.delete(at: index)
             self?.presenter?.deleteMessage(at: index)
         }
         adapter.didLoadMore = { [weak self] offset in
@@ -144,18 +146,25 @@ private extension MessageViewController {
         titleLabel.text = Constants.titleText
         titleLabel.textAlignment = .center
         titleLabel.font = .systemFont(ofSize: Constants.titleFont, weight: .heavy)
-        titleLabel.backgroundColor = .white
+        titleLabel.textColor = Colors.blackColor
+        titleLabel.backgroundColor = .clear
+        titleLabel.layer.cornerRadius = Constants.viewCornerRadius
     }
 
     func configureTextField() {
-        messageField.placeholder = Constants.placeholderText
+        messageField.attributedPlaceholder = NSAttributedString(
+            string: Constants.placeholderText,
+            attributes: [NSAttributedString.Key.foregroundColor: Colors.blackColor ?? .white]
+        )
+        messageField.tintColor = Colors.lightGrayColor
         messageField.delegate = self
         messageField.keyboardType = .default
         messageField.borderStyle = .none
-        messageField.backgroundColor = .white
+        messageField.backgroundColor = Colors.lightMintColor
         messageField.returnKeyType = .send
         messageField.setLeftPaddingPoints(Constants.textInFieldPadding)
         messageField.setRightPaddingPoints(Constants.textInFieldPadding)
+        messageField.layer.cornerRadius = Constants.viewCornerRadius
     }
 
     func addObservers() {
@@ -186,7 +195,7 @@ private extension MessageViewController {
         if textFieldButtonSpace.constant != .zero {
             UIView.animate(withDuration: notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double ?? .zero) {
                 self.textFieldButtonSpace.constant = .zero
-                self.tableViewButtonSpace.constant = 40
+                self.tableViewButtonSpace.constant = Constants.tableViewButtonSpace
                 self.view.layoutIfNeeded()
             }
         }

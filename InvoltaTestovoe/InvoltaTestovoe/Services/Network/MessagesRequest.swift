@@ -34,14 +34,10 @@ final class MessageRequest {
                 do {
                     let returnData = try JSONDecoder().decode(MessagesRequestModel.self, from: data)
                     let stringsResult = returnData.result
-            
-                    DispatchQueue.main.async {
-                        completion(.success(Array(stringsResult ?? [])))
-                    }
+
+                    completion(.success(Array(stringsResult ?? [])))
                 } catch let error {
-                    DispatchQueue.main.async {
-                        completion(.failure(error))
-                    }
+                    completion(.failure(error))
                 }
             }
         }.resume()

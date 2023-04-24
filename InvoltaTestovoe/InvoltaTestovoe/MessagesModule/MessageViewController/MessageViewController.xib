@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -25,11 +26,12 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="YpR-bn-v5F">
-                    <rect key="frame" x="0.0" y="59" width="393" height="720"/>
+                    <rect key="frame" x="0.0" y="99" width="393" height="680"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="of5-U5-ZTQ">
                     <rect key="frame" x="0.0" y="59" width="393" height="40"/>
+                    <color key="backgroundColor" name="MintColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="64j-hf-9o0"/>
                     </constraints>
@@ -39,6 +41,7 @@
                 </label>
                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IND-5Z-CH8">
                     <rect key="frame" x="0.0" y="778" width="393" height="40"/>
+                    <color key="backgroundColor" name="MintColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="9dk-T2-JYx"/>
                     </constraints>
@@ -56,7 +59,7 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="YpR-bn-v5F" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="4OK-Qs-cHc"/>
+                <constraint firstItem="YpR-bn-v5F" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="40" id="4OK-Qs-cHc"/>
                 <constraint firstItem="Z11-Aj-2q4" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="5Pu-46-wRP"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="YpR-bn-v5F" secondAttribute="bottom" constant="39" id="6S9-yc-YO6"/>
                 <constraint firstItem="of5-U5-ZTQ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="7Kd-Sa-TlJ"/>
@@ -74,6 +77,9 @@
         </view>
     </objects>
     <resources>
+        <namedColor name="MintColor">
+            <color red="0.66666666666666663" green="0.94117647058823528" blue="0.81960784313725488" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
