@@ -136,7 +136,7 @@ extension MessagePresenter: MessagePresenterDelegate {
                     self.messages += result
                     self.group.leave()
                 }
-            case .failure(let error):
+            case .failure(_):
                 SnackMessenger.shared.show(message: Constants.snackMessage, autocomplete: true)
                 self?.group.leave()
             }
