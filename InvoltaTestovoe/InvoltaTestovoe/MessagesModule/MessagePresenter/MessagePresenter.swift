@@ -26,6 +26,7 @@ final class MessagePresenter {
     // MARK: - Constants
     
     private enum Constants {
+        static let snackMessage = "Иконки не смогли загрузится"
         static let defaultOffset = "0"
         static let baseCountMessages = 14
         static let offSetStep = 20
@@ -136,8 +137,7 @@ extension MessagePresenter: MessagePresenterDelegate {
                     self.group.leave()
                 }
             case .failure(let error):
-                #warning("Обработка ошибки в виде снэка")
-                print(error)
+                SnackMessenger.shared.show(message: Constants.snackMessage, autocomplete: true)
                 self?.group.leave()
             }
             self?.group.leave()
