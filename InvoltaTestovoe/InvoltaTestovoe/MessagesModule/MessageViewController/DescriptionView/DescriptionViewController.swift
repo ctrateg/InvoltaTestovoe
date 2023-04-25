@@ -25,6 +25,8 @@ final class DescriptionViewController: UIViewController, UIGestureRecognizerDele
         static let messageFont: CGFloat = 22
         static let dateFont: CGFloat = 12
         static let cornerRadius: CGFloat = 12
+        static let baseAlpha: CGFloat = 1
+        static let animationDuration: TimeInterval = 1
     }
 
     // MARK: - IBOutlets
@@ -78,28 +80,28 @@ private extension DescriptionViewController {
         dateLabel.isHidden = true
         deleteButton.isHidden = true
 
-        iconView.alpha = 0
-        messageLabel.alpha = 0
-        dateLabel.alpha = 0
-        deleteButton.alpha = 0
+        iconView.alpha = .zero
+        messageLabel.alpha = .zero
+        dateLabel.alpha = .zero
+        deleteButton.alpha = .zero
     }
 
     func setupAnimation() {
-        UIView.animate(withDuration: 1) {
+        UIView.animate(withDuration: Constants.animationDuration) {
             self.iconView.isHidden = false
-            self.iconView.alpha = 1
+            self.iconView.alpha = Constants.baseAlpha
         }
-        UIView.animate(withDuration: 1) {
+        UIView.animate(withDuration: Constants.animationDuration) {
             self.messageLabel.isHidden = false
-            self.messageLabel.alpha = 1
+            self.messageLabel.alpha = Constants.baseAlpha
         }
-        UIView.animate(withDuration: 1) {
+        UIView.animate(withDuration: Constants.animationDuration) {
             self.dateLabel.isHidden = false
-            self.dateLabel.alpha = 1
+            self.dateLabel.alpha = Constants.baseAlpha
         }
-        UIView.animate(withDuration: 1) {
+        UIView.animate(withDuration: Constants.animationDuration) {
             self.deleteButton.isHidden = false
-            self.deleteButton.alpha = 1
+            self.deleteButton.alpha = Constants.baseAlpha
         }
     }
 
