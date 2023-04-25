@@ -47,7 +47,6 @@ final class StorageService {
         } catch let error as NSError {
             print("Ошибка при сохранении: \(error), \(error.userInfo)")
         }
-//        UserDefaults().set(values, forKey: key.rawValue)
     }
 
     func load() -> [MessageStorageModel] {
