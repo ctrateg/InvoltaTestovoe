@@ -46,7 +46,6 @@ final class DescriptionViewController: UIViewController, UIGestureRecognizerDele
         setupDefaultState()
         view.becomeFirstResponder()
         setupInitialState()
-        
     }
 
     // MARK: - Actions
@@ -55,7 +54,6 @@ final class DescriptionViewController: UIViewController, UIGestureRecognizerDele
         guard let index = model?.index else { return }
         didDeletetMessage?(index)
         navigationController?.popViewController(animated: true)
-        
     }
 
 }

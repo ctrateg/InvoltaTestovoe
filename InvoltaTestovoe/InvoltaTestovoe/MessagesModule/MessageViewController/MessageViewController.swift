@@ -118,10 +118,6 @@ extension MessageViewController: MessageViewDelegate {
         navigationController?.pushViewController(viewController, animated: true)
     }
 
-    func showErrorSnack() {
-        
-    }
-
 }
 
 // MARK: - Private Methods
